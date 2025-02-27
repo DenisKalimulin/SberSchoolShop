@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="37c82c59-9942-487c-a4a5-4f0d7afe3bb1" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2syw8WwjkQfthl5G1mF26EVmjna" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Address.executor": "Run",
+    "JUnit.AddressMapperImplTest.toAddressResponseDTO.executor": "Run",
+    "JUnit.AddressMapperImplTest.toAddressResponseDTOShouldReturnNullWhenAddressIsNull.executor": "Run",
+    "JUnit.AddressMapperImplTest.toAddress_ShouldMapAddressCreateDTOToEntity.executor": "Run",
+    "JUnit.AddressMapperTest.executor": "Run",
+    "JUnit.AddressMapperTest.testToAddress.executor": "Run",
+    "JUnit.CategoryMapperImplTest.executor": "Run",
+    "JUnit.CategoryMapperImplTest.shouldMapCategoryToCategoryResponseDTO.executor": "Run",
+    "JUnit.ImageMapperImplTest.executor": "Run",
+    "JUnit.ProductMapperImplTest.executor": "Run",
+    "JUnit.ProductMapperImplTest.toProductResponseDTO.executor": "Run",
+    "JUnit.ReviewMapperImplTest.executor": "Run",
+    "JUnit.UserMapperImplTest.executor": "Run",
+    "JUnit.UserMapperImplTest.toUserResponseDTOList.executor": "Run",
+    "JUnit.UserMapperTest.executor": "Run",
+    "JUnit.UserMapperTest.testToUser.executor": "Run",
+    "JUnit.UserMapperTest.testToUserResponseDTO.executor": "Run",
+    "JUnit.UserMapperTest.testToUserResponseDTOList.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.SberSchoolShop.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.applicationServers",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.SberSchoolShop">
+    <configuration name="ProductMapperImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dto" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.kalimulin.mappers.productMapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.kalimulin.mappers.productMapper" />
+      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.mappers.productMapper.ProductMapperImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dto" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.kalimulin.mappers.userMapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.kalimulin.mappers.userMapper" />
+      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.mappers.userMapper.UserMapperImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserMapperImplTest.toUserResponseDTOList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dto" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.kalimulin.mappers.userMapper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.kalimulin.mappers.userMapper" />
+      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.mappers.userMapper.UserMapperImplTest" />
+      <option name="METHOD_NAME" value="toUserResponseDTOList" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SberSchoolShop" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.kalimulin.SberSchoolShop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.kalimulin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SberSchoolShop" />
+        <item itemvalue="JUnit.UserMapperImplTest.toUserResponseDTOList" />
+        <item itemvalue="JUnit.UserMapperImplTest" />
+        <item itemvalue="JUnit.ProductMapperImplTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37c82c59-9942-487c-a4a5-4f0d7afe3bb1" name="Changes" comment="" />
+      <created>1722245495199</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722245495199</updated>
+      <workItem from="1739440966414" duration="15414000" />
+      <workItem from="1739462560426" duration="11756000" />
+      <workItem from="1739529177682" duration="3905000" />
+      <workItem from="1739633315054" duration="2661000" />
+      <workItem from="1739777610057" duration="12534000" />
+      <workItem from="1739792340649" duration="10658000" />
+      <workItem from="1739860059167" duration="330000" />
+      <workItem from="1739861344095" duration="46803000" />
+      <workItem from="1740227164189" duration="71699000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
