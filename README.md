@@ -18,6 +18,7 @@
 - **JUnit5 + Mockito** — для unit-тестирования        //TODO
 - **OpenAPI/Swagger** — для документирования REST API //TODO
 - **SLF4J/Logback** — для логирования                 //TODO
+- **Redis** - для кеширования популярных товаров //TODO
 
 ## Модули приложения
 
