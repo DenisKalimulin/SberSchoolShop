@@ -1,7 +1,12 @@
 package ru.kalimulin.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -17,14 +22,17 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/shop/products")
+@RequiredArgsConstructor
+@Tag(name = "Товары", description = "Методы для управления товарами")
 public class ProductController {
     private final ProductService productService;
 
-    @Autowired
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
+    @Operation(summary = "Добавить товар", description = "Позволяет продавцу добавить новый товар")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Товар успешно создан"),
+            @ApiResponse(responseCode = "400", description = "Ошибка валидации данных"),
+            @ApiResponse(responseCode = "403", description = "Доступ запрещён")
+    })
     @PostMapping
     public ResponseEntity<ProductResponseDTO> addProduct(@RequestBody ProductCreateDTO productCreateDTO,
                                                          HttpSession session) {
@@ -32,6 +40,10 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(productResponseDTO);
     }
 
+    @Operation(summary = "Поиск товаров", description = "Позволяет искать товары по фильтрам: названию, категории и цене")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товары найдены")
+    })
     @GetMapping("/search")
     public ResponseEntity<Page<ProductResponseDTO>> searchProduct(
             @RequestParam(required = false, name = "title") String title,
@@ -43,30 +55,51 @@ public class ProductController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(summary = "Найти товар по ID", description = "Возвращает информацию о товаре по его ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товар найден"),
+            @ApiResponse(responseCode = "404", description = "Товар не найден")
+    })
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> findProductById(@PathVariable Long id) {
+    public ResponseEntity<ProductResponseDTO> findProductById(
+            @Parameter(description = "ID товара", example = "1")
+            @PathVariable Long id) {
         ProductResponseDTO listingResponseDTO = productService.findById(id);
 
         return ResponseEntity.ok(listingResponseDTO);
     }
 
+    @Operation(summary = "Получить все товары", description = "Возвращает список всех товаров с пагинацией")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Список товаров получен")
+    })
     @GetMapping
     public ResponseEntity<Page<ProductResponseDTO>> findAllProducts(Pageable pageable) {
         Page<ProductResponseDTO> result = productService.findAllProducts(pageable);
         return ResponseEntity.ok(result);
     }
 
+    @Operation(summary = "Получить товары продавца", description = "Возвращает список товаров, принадлежащих конкретному продавцу")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Список товаров продавца получен")
+    })
     @GetMapping("/seller/{sellerLogin}")
-    public ResponseEntity<Page<ProductResponseDTO>> findProductsBySeller(@PathVariable String sellerLogin,
-                                                                         Pageable pageable) {
+    public ResponseEntity<Page<ProductResponseDTO>> findProductsBySeller(
+            @Parameter(description = "Логин продавца", example = "seller123")
+            @PathVariable String sellerLogin, Pageable pageable) {
         Page<ProductResponseDTO> result = productService.findAllBySeller(sellerLogin, pageable);
 
         return ResponseEntity.ok(result);
     }
 
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товар успешно обновлён"),
+            @ApiResponse(responseCode = "403", description = "Доступ запрещён"),
+            @ApiResponse(responseCode = "404", description = "Товар не найден")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> updateProduct(
-            @PathVariable Long id,
+            @Parameter(description = "ID товара", example = "1") @PathVariable Long id,
             @RequestBody ProductUpdateDTO productUpdateDTO,
             HttpSession session) {
 
@@ -74,18 +107,34 @@ public class ProductController {
         return ResponseEntity.ok(updatedProduct);
     }
 
+    @Operation(summary = "Изменить статус товара", description = "Позволяет продавцу изменить статус товара (например, в продаже или продан)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Статус товара успешно изменён"),
+            @ApiResponse(responseCode = "403", description = "Доступ запрещён"),
+            @ApiResponse(responseCode = "404", description = "Товар не найден")
+    })
     @PatchMapping("/{id}")
-    public ResponseEntity<ProductResponseDTO> changeStatus(@PathVariable Long id,
-                                                           @RequestParam ProductStatus productStatus,
-                                                           HttpSession session) {
+    public ResponseEntity<ProductResponseDTO> changeStatus(
+            @Parameter(description = "ID товара", example = "1")
+            @PathVariable Long id,
+            @Parameter(description = "Новый статус товара")
+            @RequestParam ProductStatus productStatus,
+            HttpSession session) {
         ProductResponseDTO changeListingStatus = productService.changeProductStatus(id, productStatus, session);
         return ResponseEntity.ok(changeListingStatus);
     }
 
+    @Operation(summary = "Удалить товар", description = "Позволяет продавцу удалить товар")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Товар успешно удалён"),
+            @ApiResponse(responseCode = "403", description = "Доступ запрещён"),
+            @ApiResponse(responseCode = "404", description = "Товар не найден")
+    })
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id,
-                                                HttpSession session) {
+    public ResponseEntity<String> deleteProduct(
+            @Parameter(description = "ID товара", example = "1") @PathVariable Long id,
+            HttpSession session) {
         productService.deleteProduct(id, session);
-        return ResponseEntity.ok("Товар успешно удален");
+        return ResponseEntity.ok("Товар успешно удалён");
     }
 }

@@ -1,9 +1,13 @@
 package ru.kalimulin.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,15 +20,17 @@ import ru.kalimulin.service.WalletService;
 
 @RestController
 @RequestMapping("/shop/wallet")
+@RequiredArgsConstructor
+@Tag(name = "Кошелек", description = "Методы для работы с кошельком пользователя")
 public class WalletController {
     private final WalletService walletService;
     private static final Logger logger = LoggerFactory.getLogger(WalletController.class);
 
-    @Autowired
-    public WalletController(WalletService walletService) {
-        this.walletService = walletService;
-    }
-
+    @Operation(summary = "Получить данные кошелька", description = "Возвращает баланс и номер кошелька пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Данные кошелька успешно получены"),
+            @ApiResponse(responseCode = "404", description = "Кошелек не найден")
+    })
     @GetMapping
     public ResponseEntity<WalletResponseDTO> getUserBalanceAndWalletNumber(HttpSession session) {
         logger.info("Запрос на получение данных кошелька пользователя");
@@ -33,6 +39,13 @@ public class WalletController {
         return ResponseEntity.ok(walletResponseDTO);
     }
 
+
+    @Operation(summary = "Создать кошелек", description = "Создает новый кошелек для пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Кошелек успешно создан"),
+            @ApiResponse(responseCode = "400", description = "Ошибка валидации данных"),
+            @ApiResponse(responseCode = "409", description = "У пользователя уже есть кошелек")
+    })
     @PostMapping("/create")
     public ResponseEntity<WalletResponseDTO> createWallet(HttpSession session,
                                                           @RequestBody WalletCreateDTO walletCreateDTO) {
@@ -42,6 +55,12 @@ public class WalletController {
         return ResponseEntity.status(HttpStatus.CREATED).body(walletResponseDTO);
     }
 
+    @Operation(summary = "Пополнить баланс", description = "Пополняет баланс кошелька пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Баланс успешно пополнен"),
+            @ApiResponse(responseCode = "400", description = "Ошибка валидации данных"),
+            @ApiResponse(responseCode = "404", description = "Кошелек не найден")
+    })
     @PostMapping("/deposit")
     public ResponseEntity<String> depositBalance(HttpSession session,
                                                  @RequestBody WalletUpdateBalanceDTO walletUpdateBalanceDTO) {
@@ -51,6 +70,12 @@ public class WalletController {
         return ResponseEntity.ok("Баланс успешно пополнен!");
     }
 
+    @Operation(summary = "Сменить PIN-код", description = "Изменяет PIN-код кошелька пользователя")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "PIN-код успешно изменен"),
+            @ApiResponse(responseCode = "400", description = "Ошибка валидации данных"),
+            @ApiResponse(responseCode = "404", description = "Кошелек не найден")
+    })
     @PostMapping("/change-pin")
     public ResponseEntity<String> changePin(HttpSession session,
                                             @RequestBody WalletUpdatePinDTO walletUpdatePinDTO) {
@@ -60,6 +85,14 @@ public class WalletController {
         return ResponseEntity.ok("Пин-код успешно изменен!");
     }
 
+    @Operation(summary = "Перевести деньги", description = "Переводит деньги между кошельками пользователей")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Перевод выполнен успешно"),
+            @ApiResponse(responseCode = "400", description = "Ошибка валидации данных"),
+            @ApiResponse(responseCode = "403", description = "Неверный PIN-код"),
+            @ApiResponse(responseCode = "404", description = "Кошелек отправителя или получателя не найден"),
+            @ApiResponse(responseCode = "409", description = "Недостаточно средств")
+    })
     @PostMapping("/transfer")
     public ResponseEntity<String> transferMoney(@RequestBody TransferRequestDTO transferDTO,
                                                 HttpSession session) {

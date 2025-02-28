@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c82c59-9942-487c-a4a5-4f0d7afe3bb1" name="Changes" comment="" />
+    <list default="true" id="37c82c59-9942-487c-a4a5-4f0d7afe3bb1" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/FavoriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/FavoriteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/WalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/WalletController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +40,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "DenisKalimulin"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DenisKalimulin/SberSchoolShop.git",
+    "accountId": "eb101873-e685-4636-8ff1-70e70e6ad686"
+  }
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -36,6 +66,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Address.executor": "Run",
+    "Application.AuthController.executor": "Run",
     "JUnit.AddressMapperImplTest.toAddressResponseDTO.executor": "Run",
     "JUnit.AddressMapperImplTest.toAddressResponseDTOShouldReturnNullWhenAddressIsNull.executor": "Run",
     "JUnit.AddressMapperImplTest.toAddress_ShouldMapAddressCreateDTOToEntity.executor": "Run",
@@ -79,6 +110,19 @@
   }
 }]]></component>
   <component name="RunManager" selected="Spring Boot.SberSchoolShop">
+    <configuration name="AuthController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.controllers.AuthController" />
+      <module name="web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.kalimulin.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductMapperImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dto" />
       <extension name="coverage">
@@ -140,6 +184,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AuthController" />
         <item itemvalue="Spring Boot.SberSchoolShop" />
         <item itemvalue="JUnit.UserMapperImplTest.toUserResponseDTOList" />
         <item itemvalue="JUnit.UserMapperImplTest" />
@@ -171,11 +216,24 @@
       <workItem from="1739792340649" duration="10658000" />
       <workItem from="1739860059167" duration="330000" />
       <workItem from="1739861344095" duration="46803000" />
-      <workItem from="1740227164189" duration="71699000" />
+      <workItem from="1740227164189" duration="82358000" />
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1740664012475</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740664012475</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>
