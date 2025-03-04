@@ -15,7 +15,6 @@ import ru.kalimulin.mappers.reviewMapper.ReviewMapper;
 import ru.kalimulin.models.Review;
 import ru.kalimulin.models.User;
 import ru.kalimulin.repositories.OrderRepository;
-import ru.kalimulin.repositories.ProductRepository;
 import ru.kalimulin.repositories.ReviewRepository;
 import ru.kalimulin.repositories.UserRepository;
 import ru.kalimulin.service.ReviewService;
@@ -45,6 +44,7 @@ public class ReviewServiceImpl implements ReviewService {
     @Transactional
     @Override
     public ReviewResponseDTO leaveReview(Long sellerId, ReviewCreateDTO reviewCreateDTO, HttpSession session) {
+        logger.info("Попытка оставить отзыв");
         String userLogin = SessionUtils.getUserLogin(session);
         User buyer = userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Покупатель с логином " + userLogin + " не найден"));
@@ -67,26 +67,32 @@ public class ReviewServiceImpl implements ReviewService {
 
         review = reviewRepository.save(review);
 
+        logger.info("Отзыв успешно оставлен");
         return reviewMapper.toReviewResponseDTO(review);
     }
 
     @Override
     public List<ReviewResponseDTO> getSellerReviews(Long sellerId) {
+        logger.info("Получение отзывов продавца {}", sellerId);
         List<Review> reviews = reviewRepository.findBySellerId(sellerId);
         return reviews.stream().map(reviewMapper::toReviewResponseDTO).toList();
     }
 
     @Override
     public double getSellerAverageRating(Long sellerId) {
+        logger.info("Получение среднего рейтинга продавца");
         return reviewRepository.getAverageRatingBySellerId(sellerId).orElse(0.0);
     }
 
     @Transactional
     @Override
     public void deleteReview(Long id) {
+        logger.info("Удаление отзыва {}", id);
         if (!reviewRepository.existsById(id)) {
+            logger.warn("Отзыв не найден");
             throw new ReviewNotFoundException("Отзыв с ID " + id + " не найден");
         }
+        logger.info("Отзыв удален");
         reviewRepository.deleteById(id);
     }
 }

@@ -31,12 +31,12 @@ public class RoleController {
             @ApiResponse(responseCode = "400", description = "Недостаточно средств для покупки роли")
     })
     @PostMapping("/seller")
-    public ResponseEntity<UserResponseDTO> buyer(HttpSession session) {
-        logger.info("Запрос на покупку роли BUYER от пользователя {}", SessionUtils.getUserLogin(session));
+    public ResponseEntity<UserResponseDTO> purchaseSellerRole(HttpSession session) {
+        logger.info("Запрос на покупку роли BUYER");
 
         UserResponseDTO updatedUser = roleService.purchaseSellerRole(session);
 
-        logger.info("Роль BUYER успешно приобретена пользователем {}", updatedUser.getLogin());
+        logger.info("Роль BUYER успешно приобретена");
 
         return ResponseEntity.ok(updatedUser);
     }

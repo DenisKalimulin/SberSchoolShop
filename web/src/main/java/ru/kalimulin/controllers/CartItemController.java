@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import ru.kalimulin.service.CartItemService;
 @Tag(name = "Элемент корзины", description = "Методы для работы с элементами корзины")
 public class CartItemController {
     private final CartItemService cartItemService;
+    private static final Logger logger = LoggerFactory.getLogger(CartItemController.class);
 
     @Operation(summary = "Получить элемент корзины", description = "Возвращает информацию о конкретном элементе корзины по его ID")
     @ApiResponses(value = {
@@ -31,6 +34,7 @@ public class CartItemController {
     public ResponseEntity<CartItemDTO> getCartItem(
             @Parameter(description = "ID элемента корзины", example = "1")
             @PathVariable Long id) {
+        logger.info("Запрос на получение товара из корзины");
         CartItemDTO cartItemDTO = cartItemService.getCartItem(id);
         return ResponseEntity.ok(cartItemDTO);
     }

@@ -6,10 +6,14 @@ import ru.kalimulin.customExceptions.userExceptions.UserAlreadyHasAdminRoleExcep
 import ru.kalimulin.customExceptions.userExceptions.UserNotFoundException;
 import ru.kalimulin.dto.userDTO.UserResponseDTO;
 
+/**
+ * Сервис для управления ролями пользователя
+ */
 public interface RoleService {
 
     /**
      * Покупка роли SELLER
+     *
      * @param session - аутентифицированный пользователь из сессии
      * @return обновленный пользователь с ролью SELLER
      */

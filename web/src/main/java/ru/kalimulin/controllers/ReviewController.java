@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.kalimulin.dto.reviewDTO.ReviewCreateDTO;
@@ -22,6 +24,7 @@ import java.util.List;
 @Tag(name = "Отзывы", description = "Методы для работы с отзывами")
 public class ReviewController {
     private final ReviewService reviewService;
+    private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
     @Operation(summary = "Оставить отзыв", description = "Позволяет пользователю оставить отзыв после покупки у продавца")
     @ApiResponses(value = {
@@ -35,6 +38,7 @@ public class ReviewController {
             @Parameter(description = "ID продавца", example = "1")
             @PathVariable Long sellerId, @Valid @RequestBody ReviewCreateDTO reviewCreateDTO,
             HttpSession session) {
+        logger.info("Запрос на добавление отзыва");
         ReviewResponseDTO reviewResponseDTO = reviewService.leaveReview(sellerId, reviewCreateDTO, session);
         return ResponseEntity.ok(reviewResponseDTO);
     }
@@ -48,6 +52,7 @@ public class ReviewController {
     public ResponseEntity<List<ReviewResponseDTO>> getSellerReviews(
             @Parameter(description = "ID продавца", example = "1")
             @PathVariable Long sellerId) {
+        logger.info("Запрос на получение отзывов продавца");
         List<ReviewResponseDTO> review = reviewService.getSellerReviews(sellerId);
         return ResponseEntity.ok(review);
     }
@@ -61,6 +66,7 @@ public class ReviewController {
     public ResponseEntity<Double> getSellerAverageRating(
             @Parameter(description = "ID продавца", example = "1")
             @PathVariable Long sellerId) {
+        logger.info("Запрос на получение среднего рейтинга продавца");
         Double rating = reviewService.getSellerAverageRating(sellerId);
 
         return ResponseEntity.ok(rating);

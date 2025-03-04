@@ -1,8 +1,10 @@
 package ru.kalimulin.service;
 
 import jakarta.servlet.http.HttpSession;
+import ru.kalimulin.customExceptions.userExceptions.InvalidEmailOrPasswordException;
+import ru.kalimulin.customExceptions.userExceptions.UserAlreadyExistsException;
+import ru.kalimulin.customExceptions.userExceptions.UserNotFoundException;
 import ru.kalimulin.dto.userDTO.*;
-import ru.kalimulin.customExceptions.userExceptions.*;
 
 import java.util.List;
 

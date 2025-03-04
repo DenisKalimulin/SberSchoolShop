@@ -56,6 +56,7 @@ public class CartServiceImpl implements CartService {
     @Transactional
     @Override
     public CartDTO getCart(HttpSession session) {
+        logger.info("Запрос на получение корзины");
         Cart cart = getOrCreateCart(SessionUtils.getUserLogin(session));
         return cartMapper.toCartDTO(cart);
     }
@@ -63,6 +64,7 @@ public class CartServiceImpl implements CartService {
     @Transactional
     @Override
     public void addItemToCart(HttpSession session, CartItemCreateDTO cartItemCreateDTO) {
+        logger.info("Запрос на добавление товара в корзину");
         Cart cart = getOrCreateCart(SessionUtils.getUserLogin(session));
         Product product = productRepository.findById(cartItemCreateDTO.getProductId())
                 .orElseThrow(() -> new ProductNotFoundException("Товар не найден"));
@@ -78,11 +80,14 @@ public class CartServiceImpl implements CartService {
         cartItemRepository.save(cartItem);
 
         updateCartTotalPrice(cart);
+        logger.info("Товар добавлен в корзину");
     }
 
     @Transactional
     @Override
     public void removeItemFromCart(HttpSession session, Long productId) {
+        logger.info("Запрос на удаление товара из корзины");
+
         Cart cart = getOrCreateCart(SessionUtils.getUserLogin(session));
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Товар не найден"));
@@ -94,19 +99,30 @@ public class CartServiceImpl implements CartService {
 
         cart.getItems().remove(cartItem);
         updateCartTotalPrice(cart);
+
+        logger.info("Товар удален из корзины");
     }
 
     @Transactional
     @Override
     public void clearCart(HttpSession session) {
+        logger.info("Запрос на очищение корзины");
         Cart cart = getOrCreateCart(SessionUtils.getUserLogin(session));
         cartItemRepository.deleteAll(cart.getItems());
         cart.getItems().clear();
 
         cart.setTotalPrice(BigDecimal.ZERO);
         cartRepository.save(cart);
+
+        logger.info("Корзина очищена");
     }
 
+    /**
+     * Получает или создает корзину для пользователя.
+     *
+     * @param userLogin логин пользователя
+     * @return объект корзины пользователя
+     */
     private Cart getOrCreateCart(String userLogin) {
         User user = userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь не найден"));
@@ -121,7 +137,11 @@ public class CartServiceImpl implements CartService {
                 });
     }
 
-
+    /**
+     * Обновляет общую стоимость товаров в корзине.
+     *
+     * @param cart объект корзины пользователя
+     */
     private void updateCartTotalPrice(Cart cart) {
         BigDecimal totalPrice = cart.getItems().stream()
                 .map(item -> item.getProduct().getPrice().multiply(BigDecimal.valueOf(item.getQuantity())))

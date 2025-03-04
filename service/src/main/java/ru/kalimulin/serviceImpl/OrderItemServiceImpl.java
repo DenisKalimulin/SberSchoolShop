@@ -1,5 +1,7 @@
 package ru.kalimulin.serviceImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kalimulin.customExceptions.orderExceptions.OrderItemNotFoundException;
@@ -13,6 +15,7 @@ import ru.kalimulin.service.OrderItemService;
 public class OrderItemServiceImpl implements OrderItemService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
+    private static final Logger logger = LoggerFactory.getLogger(OrderItemServiceImpl.class);
 
     @Autowired
     public OrderItemServiceImpl(OrderItemRepository orderItemRepository, OrderItemMapper orderItemMapper) {
@@ -22,6 +25,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public OrderItemDTO getOrderItem(Long id) {
+        logger.info("Попытка получить товар из заказа с id {}", id);
         OrderItem orderItem = orderItemRepository.findById(id)
                 .orElseThrow(() -> new OrderItemNotFoundException("Товар в заказе не найден"));
 

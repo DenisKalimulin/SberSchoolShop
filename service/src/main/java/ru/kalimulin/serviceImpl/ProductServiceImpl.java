@@ -43,8 +43,9 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
-    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
     private final ImageMapper imageMapper;
+
+    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     @Autowired
     public ProductServiceImpl(UserRepository userRepository, CategoryRepository categoryRepository,
@@ -89,10 +90,10 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     @Override
     public Page<ProductResponseDTO> findAllBySeller(String sellerLogin, Pageable pageable) {
-        logger.info("Поиск объявлений пользователя с логином: {}", sellerLogin);
+        logger.info("Поиск объявлений пользователя");
         User seller = userRepository.findByLogin(sellerLogin)
                 .orElseThrow(() -> {
-                    logger.error("Пользователь с логином {} не найден", sellerLogin);
+                    logger.error("Пользователь не найден");
                     return new UserNotFoundException("Пользователя с таким логином не существует");
                 });
         Page<Product> productPage = productRepository.findByOwner(seller, pageable);
@@ -103,7 +104,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDTO createProduct(ProductCreateDTO productCreateDTO, HttpSession session) {
         String userLogin = SessionUtils.getUserLogin(session);
-        logger.info("Создание нового Товара пользователем с логином {}", userLogin);
+        logger.info("Создание нового товара");
 
         User user = userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с таким логином " + userLogin + " не найден"));
@@ -111,7 +112,7 @@ public class ProductServiceImpl implements ProductService {
         boolean isSeller = user.getRoles().stream().anyMatch(role -> role.getRoleName() == RoleName.SELLER);
 
         if (!isSeller) {
-            logger.error("Пользователь с логином {} не является продавцом", user.getLogin());
+            logger.error("Пользователь не является продавцом");
             throw new UserIsNotSellerException("Пользователь с логином " + user.getLogin() + " не является продавцом");
         }
 
@@ -210,7 +211,7 @@ public class ProductServiceImpl implements ProductService {
                     return new ProductNotFoundException("Товар не найден");
                 });
 
-        if(!product.getOwner().getLogin().equalsIgnoreCase(userLogin)) {
+        if (!product.getOwner().getLogin().equalsIgnoreCase(userLogin)) {
             logger.warn("Не авторизованный пользователь пытается изменить статус объявления с id {}", id);
             throw new UnauthorizedException("Вы не можете изменить статус в этом объявлении");
         }
@@ -233,7 +234,7 @@ public class ProductServiceImpl implements ProductService {
                     return new ProductNotFoundException("Объявление не найдено");
                 });
 
-        if(!product.getOwner().getLogin().equalsIgnoreCase(userLogin)) {
+        if (!product.getOwner().getLogin().equalsIgnoreCase(userLogin)) {
             logger.warn("Не авторизованный пользователь пытается изменить статус объявления с id {}", id);
             throw new UnauthorizedException("Вы не можете изменить статус в этом объявлении");
         }

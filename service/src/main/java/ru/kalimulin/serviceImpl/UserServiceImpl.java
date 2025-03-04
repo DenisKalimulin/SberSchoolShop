@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
                            RoleRepository roleRepository,
@@ -47,7 +48,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public UserResponseDTO registerUser(UserRegistrationDTO userRegistrationDTO) {
-        logger.info("Регистрация нового пользователя: {}", userRegistrationDTO.getLogin());
+        logger.info("Регистрация нового пользователя");
         checkUserUniqueness(userRegistrationDTO.getLogin(), userRegistrationDTO.getEmail());
 
         Set<Role> defaultRole = new HashSet<>();
@@ -60,21 +61,21 @@ public class UserServiceImpl implements UserService {
         user.setRoles(defaultRole);
         User savedUser = userRepository.save(user);
 
-        logger.info("Пользователь зарегистрирован: {}", savedUser.getLogin());
+        logger.info("Пользователь зарегистрирован");
         return userMapper.toUserResponseDTO(savedUser);
     }
 
     @Override
     public LoginResponseDTO authenticateUser(LoginRequestDTO loginRequestDTO) {
-        logger.info("Попытка входа пользователя: {}", loginRequestDTO.getLogin());
+        logger.info("Попытка входа пользователя:");
         User user = findUserByLogin(loginRequestDTO.getLogin());
 
         if (!passwordEncoder.matches(loginRequestDTO.getPassword(), user.getPassword())) {
-            logger.warn("Ошибка аутентификации для пользователя: {}", loginRequestDTO.getLogin());
+            logger.warn("Ошибка аутентификации");
             throw new InvalidEmailOrPasswordException("Неверный логин или пароль");
         }
 
-        logger.info("Успешный вход пользователя: {}", loginRequestDTO.getLogin());
+        logger.info("Успешный вход");
         return LoginResponseDTO.builder()
                 .message("Успешный вход!")
                 .build();
@@ -85,7 +86,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO updateUser(HttpSession session, UserUpdateDTO userUpdateDTO) {
         String userLogin = SessionUtils.getUserLogin(session);
-        logger.info("Обновление профиля пользователя: {}", userLogin);
+        logger.info("Обновление профиля пользователя");
         User user = findUserByLogin(userLogin);
 
         checkUserUniqueness(userUpdateDTO.getLogin(), userUpdateDTO.getEmail());
@@ -103,7 +104,7 @@ public class UserServiceImpl implements UserService {
         }
 
         userRepository.save(user);
-        logger.info("Профиль пользователя {} обновлен", userLogin);
+        logger.info("Профиль пользователя обновлен");
         return userMapper.toUserResponseDTO(user);
     }
 
@@ -127,7 +128,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponseDTO getThisUserProfile(HttpSession session) {
         String userLogin = SessionUtils.getUserLogin(session);
-        logger.info("Получение профиля текущего пользователя: {}", userLogin);
+        logger.info("Получение профиля текущего пользователя");
         User user = findUserByLogin(userLogin);
         return userMapper.toUserResponseDTO(user);
     }
@@ -135,7 +136,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public UserResponseDTO getProfileByLogin(String login) {
-        logger.info("Поиск профиля пользователя по логину: {}", login);
+        logger.info("Поиск профиля пользователя");
         User user = userRepository.findByLogin(login)
                 .orElseThrow(() -> new UserNotFoundException("Пользователя с таким логином: " + login + " не существует"));
 
@@ -146,12 +147,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUserByLogin(HttpSession session) {
         String userLogin = SessionUtils.getUserLogin(session);
-        logger.info("Удаление пользователя: {}", userLogin);
+        logger.info("Удаление пользователя");
 
         User user = findUserByLogin(userLogin);
         userRepository.delete(user);
 
-        logger.info("Пользователь {} удален", userLogin);
+        logger.info("Пользователь удален");
     }
 
     /**
@@ -164,11 +165,11 @@ public class UserServiceImpl implements UserService {
      */
     private void checkUserUniqueness(String login, String email) {
         if (login != null && userRepository.findByLogin(login).isPresent()) {
-            logger.warn("Попытка регистрации с уже существующим логином: {}", login);
+            logger.warn("Попытка регистрации с уже существующим логином");
             throw new UserAlreadyExistsException("Логин уже используется");
         }
         if (email != null && userRepository.findByEmail(email).isPresent()) {
-            logger.warn("Попытка регистрации с уже существующим email: {}", email);
+            logger.warn("Попытка регистрации с уже существующим email");
             throw new UserAlreadyExistsException("Email уже используется");
         }
     }
@@ -188,20 +189,6 @@ public class UserServiceImpl implements UserService {
                 });
     }
 
-    /**
-     * Получение пользователя по email.
-     *
-     * @param email email пользователя.
-     * @return найденный пользователь.
-     * @throws UserNotFoundException если пользователь с таким email не найден.
-     */
-    private User findUserByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> {
-                    logger.warn("Пользователь с email {} не найден", email);
-                    return new UserNotFoundException("Пользователь с таким email " + email + " не найден");
-                });
-    }
 
     /**
      * Получение пользователя по логину.
@@ -213,7 +200,7 @@ public class UserServiceImpl implements UserService {
     private User findUserByLogin(String login) {
         return userRepository.findByLogin(login)
                 .orElseThrow(() -> {
-                    logger.warn("Пользователь с логином {} не найден", login);
+                    logger.warn("Пользователь не найден");
                     return new UserNotFoundException("Пользователь с таким логином " + login + " не найден");
                 });
     }

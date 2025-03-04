@@ -12,7 +12,9 @@ import ru.kalimulin.customExceptions.categoryExceptions.CategoryAlreadyExistsExc
 import ru.kalimulin.customExceptions.categoryExceptions.CategoryNotFoundException;
 import ru.kalimulin.customExceptions.imageExceptions.ImageLimitExceededException;
 import ru.kalimulin.customExceptions.imageExceptions.ImageNotFoundException;
+import ru.kalimulin.customExceptions.orderExceptions.OrderCannotBeDeletedException;
 import ru.kalimulin.customExceptions.orderExceptions.OrderItemNotFoundException;
+import ru.kalimulin.customExceptions.orderExceptions.UnauthorizedOrderDeletionException;
 import ru.kalimulin.customExceptions.productExceptions.ProductNotFoundException;
 import ru.kalimulin.customExceptions.productExceptions.ProductOutOfStockException;
 import ru.kalimulin.customExceptions.reviewExceptions.ReviewException;
@@ -174,5 +176,17 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleReviewException(ReviewException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.CONFLICT.value());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(UnauthorizedOrderDeletionException.class)
+    public ResponseEntity<ErrorResponse> handleUnauthorizedOrderDeletionException(UnauthorizedOrderDeletionException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.FORBIDDEN.value());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
+    }
+
+    @ExceptionHandler(OrderCannotBeDeletedException.class)
+    public ResponseEntity<ErrorResponse> handleOrderCannotBeDeletedException(OrderCannotBeDeletedException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 }

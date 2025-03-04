@@ -30,6 +30,7 @@ public class CartController {
     })
     @GetMapping
     public ResponseEntity<CartDTO> getCart(HttpSession session) {
+        logger.info("Запрос на получение корзины");
         CartDTO cartDTO = cartService.getCart(session);
         return ResponseEntity.ok(cartDTO);
     }
@@ -41,6 +42,7 @@ public class CartController {
     })
     @DeleteMapping("/clear")
     public ResponseEntity<String> clearCart(HttpSession session) {
+        logger.info("Запрос на очищение корзины");
         cartService.clearCart(session);
         return ResponseEntity.ok("Корзина очищена!");
     }
@@ -55,6 +57,7 @@ public class CartController {
     public ResponseEntity<String> removeItemFromCart(
             @Parameter(description = "ID товара для удаления", example = "1")
             @PathVariable Long productId, HttpSession session) {
+        logger.info("Запрос на удаление товара из корзины");
         cartService.removeItemFromCart(session, productId);
         return ResponseEntity.ok("Товар успешно удален из корзины!");
     }
@@ -67,6 +70,7 @@ public class CartController {
     })
     @PostMapping
     public ResponseEntity<String> addItemToCart(HttpSession session, @RequestBody CartItemCreateDTO cartItemCreateDTO) {
+        logger.info("Запрос на добавление товара в корзину");
         cartService.addItemToCart(session, cartItemCreateDTO);
         return ResponseEntity.ok("Товар успешно добавлен в корзину!");
     }

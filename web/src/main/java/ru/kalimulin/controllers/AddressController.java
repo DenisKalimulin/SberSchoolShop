@@ -24,7 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/shop/address")
 @RequiredArgsConstructor
-@Tag(name = "Address Controller", description = "Управление адресами пользователей")
+@Tag(name = "Адреса", description = "Управление адресами пользователей")
 public class AddressController {
     private final AddressService addressService;
     private static final Logger logger = LoggerFactory.getLogger(AddressController.class);

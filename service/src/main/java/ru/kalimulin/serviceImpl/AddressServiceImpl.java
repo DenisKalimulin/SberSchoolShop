@@ -43,7 +43,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public AddressResponseDTO createAddress(AddressCreateDTO addressCreateDTO, HttpSession session) {
         User user = getUser(session);
-        logger.info("Запрос на создание адреса от пользователя: {}", user.getLogin());
+        logger.info("Запрос на создание адреса от пользователя");
         Address address = addressMapper.toAddress(addressCreateDTO);
         address.setUser(user);
 
@@ -51,7 +51,7 @@ public class AddressServiceImpl implements AddressService {
 
         userRepository.save(user);
 
-        logger.info("Адрес успешно создан для пользователя {}: {}", user.getLogin(), address);
+        logger.info("Адрес успешно создан");
         return addressMapper.toAddressResponseDTO(address);
     }
 
@@ -59,11 +59,10 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public List<AddressResponseDTO> getAddresses(HttpSession session) {
         User user = getUser(session);
-        logger.info("Запрос на получение списка адресов пользователя: {}", user.getLogin());
+        logger.info("Запрос на получение списка адресов");
 
         List<Address> addresses = addressRepository.findAddressByUser(user);
 
-        logger.info("Адрес успешно создан для пользователя {}:", user.getLogin());
         return addressMapper.toAddressResponseDTOList(addresses);
     }
 
@@ -71,12 +70,12 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public AddressResponseDTO updateAddress(Long addressId, AddressUpdateDTO addressUpdateDTO, HttpSession session) {
         User user = getUser(session);
-        logger.info("Запрос на обновление адреса с id {} от пользователя {}",addressId, user.getLogin());
+        logger.info("Запрос на обновление адреса" );
 
         Address address = getAddressById(addressId);
 
         if (!address.getUser().equals(user)) {
-            logger.warn("Попытка изменения чужого адреса пользователем {}", user.getLogin());
+            logger.warn("Попытка изменения чужого адреса");
             throw new UnauthorizedAccessException("Этот адрес не принадлежит текущему пользователю.");
         }
 
@@ -97,7 +96,7 @@ public class AddressServiceImpl implements AddressService {
         }
 
         addressRepository.save(address);
-        logger.info("Адрес с id {} успешно обновлен пользователем {}", address.getId(), user.getLogin());
+        logger.info("Адрес обновлен пользователем");
         return addressMapper.toAddressResponseDTO(address);
     }
 
@@ -106,29 +105,34 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public void deleteAddress(Long id, HttpSession session) {
         User user = getUser(session);
-        logger.info("Запрос на удаление адреса с id {} от пользователя {}", id, user.getLogin());
+        logger.info("Запрос на удаление адреса");
 
         Address address = getAddressById(id);
 
         user.getAddresses().remove(address);
         addressRepository.delete(address);
-        logger.info("Адрес с id {} успешно удален пользователем {}", id, user.getLogin());
+        logger.info("Адрес успешно удален");
     }
 
     /**
-     * @param session
-     * @return
+     * Получает пользователя по текущей сессии.
+     *
+     * @param session текущая сессия пользователя
+     * @return объект пользователя
+     * @throws UserNotFoundException если пользователь не найден
      */
     private User getUser(HttpSession session) {
         String userLogin = SessionUtils.getUserLogin(session);
-
         return userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с login " + userLogin + " не найден"));
     }
 
     /**
-     * @param id
-     * @return
+     * Получает адрес по его идентификатору.
+     *
+     * @param id идентификатор адреса
+     * @return объект адреса
+     * @throws AddressNotFoundException если адрес не найден
      */
     private Address getAddressById(Long id) {
         return addressRepository.findById(id)

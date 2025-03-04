@@ -17,7 +17,6 @@ import ru.kalimulin.models.Role;
 import ru.kalimulin.models.User;
 import ru.kalimulin.repositories.RoleRepository;
 import ru.kalimulin.repositories.UserRepository;
-import ru.kalimulin.repositories.WalletRepository;
 import ru.kalimulin.service.RoleService;
 import ru.kalimulin.stubService.PaymentService;
 import ru.kalimulin.stubService.PaymentServiceImpl;
@@ -54,7 +53,7 @@ public class RoleServiceImpl implements RoleService {
         User user = userRepository.findByLogin(SessionUtils.getUserLogin(session))
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с логином "
                         + SessionUtils.getUserLogin(session) + " не найден"));
-        logger.info("Пользователь {} пытается купить роль BUYER", user.getLogin());
+        logger.info("Пользователь пытается купить роль BUYER");
 
         paymentService.withdrawFunds(user.getLogin(), SELLER_ROLE_PRICE);
 
@@ -65,21 +64,21 @@ public class RoleServiceImpl implements RoleService {
 
         userRepository.save(user);
 
-        logger.info("Пользователь {} успешно приобрел роль SELLER", user.getLogin());
+        logger.info("Пользователь успешно приобрел роль SELLER");
         return userMapper.toUserResponseDTO(user);
     }
 
     @Transactional
     @Override
     public UserResponseDTO addAdminRole(String email) {
-        logger.info("Добавление роли ADMIN пользователю: {}", email);
+        logger.info("Добавление роли ADMIN пользователю");
         User user = findUserByEmail(email);
 
         boolean hasAdminRole = user.getRoles().stream()
                 .anyMatch(role -> role.getRoleName() == RoleName.ADMIN);
 
         if (hasAdminRole) {
-            logger.warn("Пользователь {} уже является администратором", email);
+            logger.warn("Пользователь уже является администратором");
             throw new UserAlreadyHasAdminRoleException("У пользователя уже есть роль администратора");
         }
 
@@ -89,14 +88,14 @@ public class RoleServiceImpl implements RoleService {
         user.getRoles().add(adminRole);
         userRepository.save(user);
 
-        logger.info("Пользователь {} теперь является администратором", email);
+        logger.info("Пользователь теперь является администратором");
         return userMapper.toUserResponseDTO(user);
     }
 
     private User findUserByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> {
-                    logger.warn("Пользователь с email {} не найден", email);
+                    logger.warn("Пользователь не найден");
                     return new UserNotFoundException("Пользователь с таким email " + email + " не найден");
                 });
     }

@@ -1,12 +1,16 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.cartExceptions.CartIsEmptyException;
 import ru.kalimulin.customExceptions.cartExceptions.CartNotFoundException;
+import ru.kalimulin.customExceptions.orderExceptions.OrderCannotBeDeletedException;
 import ru.kalimulin.customExceptions.orderExceptions.OrderNotFoundException;
+import ru.kalimulin.customExceptions.orderExceptions.UnauthorizedOrderDeletionException;
 import ru.kalimulin.customExceptions.productExceptions.NotEnoughStockException;
 import ru.kalimulin.customExceptions.productExceptions.ProductNotFoundException;
 import ru.kalimulin.customExceptions.userExceptions.UserNotFoundException;
@@ -23,7 +27,6 @@ import ru.kalimulin.stubService.PaymentService;
 import ru.kalimulin.util.SessionUtils;
 
 import java.math.BigDecimal;
-import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +41,8 @@ public class OrderServiceImpl implements OrderService {
     private final CartService cartService;
     private final ProductRepository productRepository;
     private final WalletRepository walletRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository, UserRepository userRepository,
@@ -57,6 +62,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public OrderDTO createOrder(HttpSession session) {
+        logger.info("Попытка создать заказ");
         String userLogin = SessionUtils.getUserLogin(session);
         User user = userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с логином " + userLogin + " не найден"));
@@ -68,12 +74,15 @@ public class OrderServiceImpl implements OrderService {
 
         order = orderRepository.save(order);
 
+        logger.info("Заказ успешно создан");
+
         return orderMapper.toOrderDTO(order);
     }
 
     @Transactional
     @Override
     public OrderDTO paymentOrder(Long orderId, HttpSession session) {
+        logger.info("Попытка оплатить заказ");
         String userLogin = SessionUtils.getUserLogin(session);
         User user = userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с логином " + userLogin + " не найден"));
@@ -121,6 +130,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public List<OrderDTO> getUserOrders(HttpSession session) {
+        logger.info("Попытка получить список заказов пользователя");
         String userLogin = SessionUtils.getUserLogin(session);
         User user = userRepository.findByLogin(userLogin)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с логином " + userLogin + " не найден"));
@@ -128,14 +138,42 @@ public class OrderServiceImpl implements OrderService {
         List<Order> userOrders = orderRepository.findByUser(user)
                 .orElseThrow(() -> new OrderNotFoundException("История покупок не найдена"));
 
+        logger.info("Заказы успешно получены");
         return orderMapper.toListOrderDTO(userOrders);
     }
 
+    @Transactional
+    @Override
+    public void deleteUnpaidOrder(Long id, HttpSession session) {
+        logger.info("Попытка удалить заказ по id {}", id);
+        String userLogin = SessionUtils.getUserLogin(session);
+        User user = userRepository.findByLogin(userLogin)
+                .orElseThrow(() -> new UserNotFoundException("Пользователь с логином " + userLogin + " не найден"));
+
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new OrderNotFoundException("Заказ с таким id " + id + " не найден"));
+
+        if (!user.equals(order.getUser())) {
+            throw new UnauthorizedOrderDeletionException("Вы не можете удалить не свой заказ");
+        }
+
+        if (order.getStatus() == OrderStatus.PENDING) {
+            logger.info("Заказ успешно удален");
+            orderRepository.delete(order);
+        } else {
+            logger.warn("Пользователь пытается удалить оплаченный заказ");
+            throw new OrderCannotBeDeletedException("Можно удалить только неоплаченный заказ");
+        }
+    }
+
     /**
-     * @param user
-     * @param amount
-     * @param cart
-     * @return
+     * Создает новый заказ на основе содержимого корзины пользователя.
+     *
+     * @param user   пользователь, который оформляет заказ.
+     * @param amount общая стоимость заказа.
+     * @param cart   корзина пользователя, содержащая товары.
+     * @return созданный объект заказа (Order).
+     * @throws CartIsEmptyException если корзина пользователя пуста.
      */
     private Order createOrderFromCart(User user, BigDecimal amount, Cart cart) {
         if (cart.getItems() == null || cart.getItems().isEmpty()) {

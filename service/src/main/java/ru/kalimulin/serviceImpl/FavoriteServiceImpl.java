@@ -48,7 +48,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 
         Product product = findProductById(productId);
 
-        logger.info("Пользователь с логином {} пытается добавить в избранное товар с id {}", userLogin, productId);
+        logger.info("Пользователь пытается добавить в избранное товар с id {}", productId);
 
         Favorite favorite = favoriteRepository.findByUser(user)
                 .orElse(Favorite.builder().user(user).products(new ArrayList<>()).build());
@@ -71,7 +71,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 
         Product product = findProductById(productId);
 
-        logger.info("Попытка пользователя {} удалить товар из избранного", userLogin);
+        logger.info("Попытка пользователя удалить товар из избранного");
 
         Favorite favorite = findFavoriteByUser(user);
 
@@ -87,11 +87,11 @@ public class FavoriteServiceImpl implements FavoriteService {
         String userLogin = SessionUtils.getUserLogin(session);
         User user = findUserByLogin(userLogin);
 
-        logger.info("Попытка получить список товаров из избранного пользователя {}", userLogin);
+        logger.info("Попытка получить список товаров из избранного пользователя");
 
         Favorite favorite = findFavoriteByUser(user);
 
-        logger.info("Пользователь {} получил список товаров из избранного", userLogin);
+        logger.info("Пользователь получил список товаров из избранного");
         return productMapper.toListProductResponseDTO(favorite.getProducts());
     }
 
@@ -105,7 +105,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     private User findUserByLogin(String login) {
         return userRepository.findByLogin(login)
                 .orElseThrow(() -> {
-                    logger.warn("Пользователь с логином {} не найден", login);
+                    logger.warn("Пользователь не найден");
                     return new UserNotFoundException("Пользователь с таким логином " + login + " не найден");
                 });
     }
@@ -135,7 +135,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     private Favorite findFavoriteByUser(User user) {
         return favoriteRepository.findByUser(user)
                 .orElseThrow(() -> {
-                    logger.warn("Избранное пользователя с логином {} не найдено", user.getLogin());
+                    logger.warn("Избранное пользователя не найдено");
                     return new FavoriteNotFoundException("Избранное не найдено");
                 });
     }

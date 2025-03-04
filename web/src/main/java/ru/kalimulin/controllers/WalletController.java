@@ -35,7 +35,6 @@ public class WalletController {
     public ResponseEntity<WalletResponseDTO> getUserBalanceAndWalletNumber(HttpSession session) {
         logger.info("Запрос на получение данных кошелька пользователя");
         WalletResponseDTO walletResponseDTO = walletService.getUserWallet(session);
-        logger.info("Баланс: {}, Номер кошелька: {}", walletResponseDTO.getBalance(), walletResponseDTO.getWalletNumber());
         return ResponseEntity.ok(walletResponseDTO);
     }
 
@@ -51,7 +50,6 @@ public class WalletController {
                                                           @RequestBody WalletCreateDTO walletCreateDTO) {
         logger.info("Запрос на создание нового кошелька");
         WalletResponseDTO walletResponseDTO = walletService.createWallet(walletCreateDTO, session);
-        logger.info("Кошелек успешно создан с номером {}", walletResponseDTO.getWalletNumber());
         return ResponseEntity.status(HttpStatus.CREATED).body(walletResponseDTO);
     }
 
@@ -64,7 +62,7 @@ public class WalletController {
     @PostMapping("/deposit")
     public ResponseEntity<String> depositBalance(HttpSession session,
                                                  @RequestBody WalletUpdateBalanceDTO walletUpdateBalanceDTO) {
-        logger.info("Запрос на пополнение баланса на сумму {}", walletUpdateBalanceDTO.getAmount());
+        logger.info("Запрос на пополнение баланса");
         walletService.deposit(session, walletUpdateBalanceDTO);
         logger.info("Баланс успешно пополнен!");
         return ResponseEntity.ok("Баланс успешно пополнен!");

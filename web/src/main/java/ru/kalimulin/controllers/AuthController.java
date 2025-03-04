@@ -37,7 +37,7 @@ public class AuthController {
                                                         UserRegistrationDTO userRegistrationDTO) {
         UserResponseDTO userResponseDTO = userService.registerUser(userRegistrationDTO);
 
-        logger.info("Новый пользователь зарегистрирован: {}", userResponseDTO.getLogin());
+        logger.info("Новый пользователь зарегистрирован");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDTO);
 
@@ -55,7 +55,7 @@ public class AuthController {
         LoginResponseDTO loginResponseDTO = userService.authenticateUser(loginRequestDTO);
         session.setAttribute("userLogin", loginRequestDTO.getLogin());
 
-        logger.info("Пользователь вошел в систему: {}", loginRequestDTO.getLogin());
+        logger.info("Пользователь вошел в систему");
 
         return ResponseEntity.ok(loginResponseDTO);
     }
@@ -70,7 +70,7 @@ public class AuthController {
 
         session.invalidate();
 
-        logger.info("Пользователь вышел из системы: {}", login);
+        logger.info("Пользователь вышел из системы");
 
         return ResponseEntity.ok("Успешный выход!");
     }
@@ -82,7 +82,7 @@ public class AuthController {
     })
     @GetMapping("/profile")
     public ResponseEntity<UserResponseDTO> getUserProfile(HttpSession session) {
-        logger.info("Запрос на получение текущего профиля {}", SessionUtils.getUserLogin(session));
+        logger.info("Запрос на получение профиля");
         UserResponseDTO userResponseDTO = userService.getThisUserProfile(session);
         return ResponseEntity.ok(userResponseDTO);
     }

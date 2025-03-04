@@ -35,7 +35,7 @@ public class UserController {
                                                       HttpSession session) {
 
         UserResponseDTO updatedUser = userService.updateUser(session, userUpdateDTO);
-        logger.info("Профиль пользователя с email {} был успешно обновлен", updatedUser.getEmail());
+        logger.info("Профиль пользователя был успешно обновлен");
 
         return ResponseEntity.ok(updatedUser);
     }
@@ -52,7 +52,7 @@ public class UserController {
 
         userService.deleteUserByLogin(session);
         session.invalidate();
-        logger.info("Пользователь с email {} был успешно удален из системы", SessionUtils.getUserLogin(session));
+        logger.info("Пользователь был успешно удален из системы");
 
         return ResponseEntity.ok("Профиль удален");
     }
@@ -64,7 +64,7 @@ public class UserController {
     })
     @GetMapping("/{login}")
     public ResponseEntity<UserResponseDTO> getUserByLogin(@PathVariable String login) {
-        logger.info("Авторизация пользователя {} в систему", login);
+        logger.info("Авторизация пользователя в систему");
         UserResponseDTO userResponseDTO = userService.getProfileByLogin(login);
 
         return ResponseEntity.ok(userResponseDTO);

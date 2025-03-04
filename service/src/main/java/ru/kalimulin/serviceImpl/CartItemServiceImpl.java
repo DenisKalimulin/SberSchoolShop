@@ -1,5 +1,7 @@
 package ru.kalimulin.serviceImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,7 @@ import ru.kalimulin.service.CartItemService;
 public class CartItemServiceImpl implements CartItemService {
     private final CartItemRepository cartItemRepository;
     private final CartItemMapper cartItemMapper;
+    private static final Logger logger = LoggerFactory.getLogger(CartItemServiceImpl.class);
 
     @Autowired
     public CartItemServiceImpl(CartItemRepository cartItemRepository,
@@ -25,6 +28,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Transactional
     @Override
     public CartItemDTO getCartItem(Long id) {
+        logger.info("Запрос на получение единицы товара из корзины");
         CartItem cartItem = cartItemRepository.findById(id)
                 .orElseThrow(() -> new CartItemNotFoundException("Товар в корзине не найден"));
         return cartItemMapper.toCartItemDTO(cartItem);

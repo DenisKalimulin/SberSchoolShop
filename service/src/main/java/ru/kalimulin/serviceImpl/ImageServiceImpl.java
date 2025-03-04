@@ -27,9 +27,9 @@ public class ImageServiceImpl implements ImageService {
     private static final Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
 
     @Autowired
-    public ImageServiceImpl (ImageRepository imageRepository,
-                             ProductRepository productRepository,
-                             ImageMapper imageMapper) {
+    public ImageServiceImpl(ImageRepository imageRepository,
+                            ProductRepository productRepository,
+                            ImageMapper imageMapper) {
         this.imageRepository = imageRepository;
         this.productRepository = productRepository;
         this.imageMapper = imageMapper;
@@ -38,15 +38,15 @@ public class ImageServiceImpl implements ImageService {
     @Transactional
     @Override
     public ImageResponseDTO addImageToProduct(Long productId, ImageCreateDTO imageCreateDTO) {
-        logger.info("Начало добавления изображения к продукту с id {}", productId);
+        logger.info("Начало добавления изображения к товару с id {}", productId);
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> {
                     logger.error("Продукт с ID {} не найден!", productId);
                     return new ProductNotFoundException("Продукт не найден");
                 });
 
-        if(product.getImages().size() >= 5) {
-            logger.warn("Превышен лимит изображений для продукта ID {}", productId);
+        if (product.getImages().size() >= 5) {
+            logger.warn("Превышен лимит изображений для товара ID {}", productId);
             throw new ImageLimitExceededException("У товара не может быть больше 5 изображений");
         }
 
@@ -71,7 +71,7 @@ public class ImageServiceImpl implements ImageService {
     @Transactional
     @Override
     public void deleteImageById(Long imageId) {
-        if(!imageRepository.existsById(imageId)) {
+        if (!imageRepository.existsById(imageId)) {
             throw new ImageNotFoundException("Изображение с id " + imageId + " не найдено");
         }
         imageRepository.deleteById(imageId);

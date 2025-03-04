@@ -32,10 +32,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Transactional(readOnly = true)
     @Override
     public CategoryResponseDTO findById(Long id) {
-        logger.info("Поиск категории по ID: {}", id);
+        logger.info("Поиск категории по ID");
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> {
-                    logger.warn("Категория с ID {} не найдена", id);
+                    logger.warn("Категория не найдена", id);
                     return new CategoryNotFoundException("Категория c id " + id + " не найдена");
                 });
         logger.info("Категория найдена: {}", category.getName());

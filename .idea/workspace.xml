@@ -4,24 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c82c59-9942-487c-a4a5-4f0d7afe3bb1" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/config/SwaggerConfig.java" afterDir="false" />
+    <list default="true" id="37c82c59-9942-487c-a4a5-4f0d7afe3bb1" name="Changes" comment="add Swagger">
+      <change afterPath="$PROJECT_DIR$/config/src/main/java/ru/kalimulin/loggerConfig/RequestLoggingFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exception/src/main/java/ru/kalimulin/customExceptions/orderExceptions/OrderCannotBeDeletedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exception/src/main/java/ru/kalimulin/customExceptions/orderExceptions/UnauthorizedOrderDeletionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/src/main/resources/logback-spring.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exception/src/main/java/ru/kalimulin/exceptionHandler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/exception/src/main/java/ru/kalimulin/exceptionHandler/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/src/main/java/ru/kalimulin/repositories/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/repository/src/main/java/ru/kalimulin/repositories/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/CartItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/CartItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/FavoriteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/FavoriteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/OrderItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/OrderItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/WalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/service/WalletService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/AddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/CartItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/CartItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/FavoriteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/FavoriteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/ImageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/OrderItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/OrderItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/WalletServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/ru/kalimulin/serviceImpl/WalletServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AddressController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CartItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/FavoriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/FavoriteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ImageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/OrderItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/ReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/RoleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/WalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/ru/kalimulin/controllers/WalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +95,8 @@
   "keyToString": {
     "Application.Address.executor": "Run",
     "Application.AuthController.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.OrderServiceImpl.executor": "Run",
     "JUnit.AddressMapperImplTest.toAddressResponseDTO.executor": "Run",
     "JUnit.AddressMapperImplTest.toAddressResponseDTOShouldReturnNullWhenAddressIsNull.executor": "Run",
     "JUnit.AddressMapperImplTest.toAddress_ShouldMapAddressCreateDTOToEntity.executor": "Run",
@@ -123,32 +153,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductMapperImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dto" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.Main" />
+      <module name="repository" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.kalimulin.mappers.productMapper.*" />
+          <option name="PATTERN" value="ru.kalimulin.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ru.kalimulin.mappers.productMapper" />
-      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.mappers.productMapper.ProductMapperImplTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserMapperImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dto" />
+    <configuration name="OrderServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.serviceImpl.OrderServiceImpl" />
+      <module name="service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.kalimulin.mappers.userMapper.*" />
+          <option name="PATTERN" value="ru.kalimulin.serviceImpl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ru.kalimulin.mappers.userMapper" />
-      <option name="MAIN_CLASS_NAME" value="ru.kalimulin.mappers.userMapper.UserMapperImplTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,11 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AuthController" />
         <item itemvalue="Spring Boot.SberSchoolShop" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.OrderServiceImpl" />
+        <item itemvalue="Application.AuthController" />
         <item itemvalue="JUnit.UserMapperImplTest.toUserResponseDTOList" />
-        <item itemvalue="JUnit.UserMapperImplTest" />
-        <item itemvalue="JUnit.ProductMapperImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +242,7 @@
       <workItem from="1739792340649" duration="10658000" />
       <workItem from="1739860059167" duration="330000" />
       <workItem from="1739861344095" duration="46803000" />
-      <workItem from="1740227164189" duration="82358000" />
+      <workItem from="1740227164189" duration="109469000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -226,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740664012475</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add Swagger">
+      <option name="closed" value="true" />
+      <created>1740750504111</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740750504111</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +268,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="add Swagger" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Swagger" />
   </component>
 </project>

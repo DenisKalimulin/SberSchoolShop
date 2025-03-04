@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/shop/admin")
-@Tag(name = "Admin Controller", description = "Административные операции с пользователями, ролями, категориями и отзывами")
+@Tag(name = "Администратор", description = "Административные операции с пользователями, ролями, категориями и отзывами")
 @RequiredArgsConstructor
 public class AdminController {
     private final UserService userService;
@@ -79,9 +79,9 @@ public class AdminController {
     public ResponseEntity<UserResponseDTO> addRoleToUser(
             @Parameter(description = "Email пользователя", example = "user@example.com")
             @PathVariable String userEmail) {
-        logger.info("Попытка назначения роли ADMIN пользователю с email: {}", userEmail);
+        logger.info("Попытка назначения роли ADMIN пользователю");
         UserResponseDTO userResponseDTO = roleService.addAdminRole(userEmail);
-        logger.info("Роль ADMIN успешно назначена пользователю с email: {}", userEmail);
+        logger.info("Роль ADMIN успешно назначена пользователю");
         return ResponseEntity.ok(userResponseDTO);
     }
 
