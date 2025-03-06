@@ -1,11 +1,12 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kalimulin.customExceptions.roleExceptions.RoleAlreadyAssignedException;
 import ru.kalimulin.customExceptions.roleExceptions.RoleNotFoundException;
 import ru.kalimulin.customExceptions.userExceptions.AdminRoleNotFoundException;
 import ru.kalimulin.customExceptions.userExceptions.UserAlreadyHasAdminRoleException;
@@ -19,12 +20,12 @@ import ru.kalimulin.repositories.RoleRepository;
 import ru.kalimulin.repositories.UserRepository;
 import ru.kalimulin.service.RoleService;
 import ru.kalimulin.stubService.PaymentService;
-import ru.kalimulin.stubService.PaymentServiceImpl;
 import ru.kalimulin.util.SessionUtils;
 
 import java.math.BigDecimal;
 
 @Service
+@RequiredArgsConstructor
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
@@ -34,31 +35,22 @@ public class RoleServiceImpl implements RoleService {
     private static final Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
     private static final BigDecimal SELLER_ROLE_PRICE = BigDecimal.valueOf(999.99);
 
-
-    @Autowired
-    public RoleServiceImpl(RoleRepository roleRepository,
-                           UserRepository userRepository,
-                           UserMapper userMapper,
-                           PaymentServiceImpl paymentService) {
-        this.roleRepository = roleRepository;
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-        this.paymentService = paymentService;
-    }
-
-
     @Transactional
     @Override
     public UserResponseDTO purchaseSellerRole(HttpSession session) {
         User user = userRepository.findByLogin(SessionUtils.getUserLogin(session))
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с логином "
                         + SessionUtils.getUserLogin(session) + " не найден"));
-        logger.info("Пользователь пытается купить роль BUYER");
+        logger.info("Пользователь пытается купить роль SELLER");
 
         paymentService.withdrawFunds(user.getLogin(), SELLER_ROLE_PRICE);
 
         Role sellerRole = roleRepository.findByRoleName(RoleName.SELLER)
                 .orElseThrow(() -> new RoleNotFoundException("Роль SELLER не найдена"));
+
+        if(user.getRoles().contains(sellerRole)) {
+            throw new RoleAlreadyAssignedException("Вы уже являетесь продавцом!");
+        }
 
         user.getRoles().add(sellerRole);
 

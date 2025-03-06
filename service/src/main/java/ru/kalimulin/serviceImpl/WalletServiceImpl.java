@@ -1,10 +1,10 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.userExceptions.UserNotFoundException;
@@ -23,13 +23,13 @@ import ru.kalimulin.repositories.UserRepository;
 import ru.kalimulin.repositories.WalletRepository;
 import ru.kalimulin.service.WalletService;
 import ru.kalimulin.stubService.PaymentService;
-import ru.kalimulin.stubService.PaymentServiceImpl;
 import ru.kalimulin.util.SessionUtils;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;
 
 @Service
+@RequiredArgsConstructor
 public class WalletServiceImpl implements WalletService {
     private final WalletRepository walletRepository;
     private final UserRepository userRepository;
@@ -37,16 +37,6 @@ public class WalletServiceImpl implements WalletService {
     private final PaymentService paymentService;
 
     private static final Logger logger = LoggerFactory.getLogger(WalletServiceImpl.class);
-
-
-    @Autowired
-    public WalletServiceImpl(WalletRepository walletRepository, UserRepository userRepository,
-                             WalletMapper walletMapper, PaymentServiceImpl paymentService) {
-        this.walletRepository = walletRepository;
-        this.userRepository = userRepository;
-        this.walletMapper = walletMapper;
-        this.paymentService = paymentService;
-    }
 
     @Transactional
     @Override

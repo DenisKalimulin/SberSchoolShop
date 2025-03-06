@@ -1,8 +1,8 @@
 package ru.kalimulin.serviceImpl;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.imageExceptions.ImageLimitExceededException;
@@ -20,20 +20,12 @@ import ru.kalimulin.service.ImageService;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
     private final ImageRepository imageRepository;
     private final ProductRepository productRepository;
     private final ImageMapper imageMapper;
     private static final Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
-
-    @Autowired
-    public ImageServiceImpl(ImageRepository imageRepository,
-                            ProductRepository productRepository,
-                            ImageMapper imageMapper) {
-        this.imageRepository = imageRepository;
-        this.productRepository = productRepository;
-        this.imageMapper = imageMapper;
-    }
 
     @Transactional
     @Override

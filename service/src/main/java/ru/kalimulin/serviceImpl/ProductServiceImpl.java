@@ -1,9 +1,9 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
@@ -46,17 +47,6 @@ public class ProductServiceImpl implements ProductService {
     private final ImageMapper imageMapper;
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
-
-    @Autowired
-    public ProductServiceImpl(UserRepository userRepository, CategoryRepository categoryRepository,
-                              ProductRepository productRepository, ProductMapper productMapper, ImageMapper imageMapper) {
-        this.userRepository = userRepository;
-        this.categoryRepository = categoryRepository;
-        this.productRepository = productRepository;
-        this.productMapper = productMapper;
-        this.imageMapper = imageMapper;
-    }
-
 
     @Transactional
     @Override

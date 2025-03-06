@@ -1,8 +1,8 @@
 package ru.kalimulin.serviceImpl;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kalimulin.customExceptions.orderExceptions.OrderItemNotFoundException;
 import ru.kalimulin.dto.orderItemDTO.OrderItemDTO;
@@ -12,16 +12,11 @@ import ru.kalimulin.repositories.OrderItemRepository;
 import ru.kalimulin.service.OrderItemService;
 
 @Service
+@RequiredArgsConstructor
 public class OrderItemServiceImpl implements OrderItemService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
     private static final Logger logger = LoggerFactory.getLogger(OrderItemServiceImpl.class);
-
-    @Autowired
-    public OrderItemServiceImpl(OrderItemRepository orderItemRepository, OrderItemMapper orderItemMapper) {
-        this.orderItemRepository = orderItemRepository;
-        this.orderItemMapper = orderItemMapper;
-    }
 
     @Override
     public OrderItemDTO getOrderItem(Long id) {

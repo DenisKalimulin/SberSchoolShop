@@ -1,0 +1,36 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    topics:
+      order-events: order-events
+      email-notifications: email-notifications
+      inventory-updates: inventory-updates
+
+    consumer:
+      group-id: email-group
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
+
+    inventory-consumer:
+      group-id: inventory-group
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
+
+    producer:
+      properties:
+        spring.json.trusted.packages: "*"
+
+  mail:
+    host: smtp.mail.ru
+    port: 587
+    username: sberschoolshop@mail.ru
+    password: KvfwpdQhvjJshga2wMXK
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

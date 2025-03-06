@@ -1,11 +1,14 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.kalimulin.customExceptions.addressExceptions.AddressNotFoundException;
+import ru.kalimulin.customExceptions.addressExceptions.AddressNotProvidedException;
+import ru.kalimulin.customExceptions.addressExceptions.UserHasNoAddressException;
 import ru.kalimulin.customExceptions.cartExceptions.CartIsEmptyException;
 import ru.kalimulin.customExceptions.cartExceptions.CartNotFoundException;
 import ru.kalimulin.customExceptions.orderExceptions.OrderCannotBeDeletedException;
@@ -13,11 +16,15 @@ import ru.kalimulin.customExceptions.orderExceptions.OrderNotFoundException;
 import ru.kalimulin.customExceptions.orderExceptions.UnauthorizedOrderDeletionException;
 import ru.kalimulin.customExceptions.productExceptions.NotEnoughStockException;
 import ru.kalimulin.customExceptions.productExceptions.ProductNotFoundException;
+import ru.kalimulin.customExceptions.userExceptions.UnauthorizedAccessException;
 import ru.kalimulin.customExceptions.userExceptions.UserNotFoundException;
 import ru.kalimulin.customExceptions.walletExceptions.PaymentProcessingException;
 import ru.kalimulin.customExceptions.walletExceptions.WalletNotFoundException;
+import ru.kalimulin.dto.kafkaEventDTO.EmailNotificationEvent;
 import ru.kalimulin.dto.orderDTO.OrderDTO;
 import ru.kalimulin.enums.OrderStatus;
+import ru.kalimulin.kafka.InventoryEventProducer;
+import ru.kalimulin.kafka.KafkaOrderEventPublisher;
 import ru.kalimulin.mappers.orderMapper.OrderMapper;
 import ru.kalimulin.models.*;
 import ru.kalimulin.repositories.*;
@@ -32,6 +39,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
@@ -41,23 +49,11 @@ public class OrderServiceImpl implements OrderService {
     private final CartService cartService;
     private final ProductRepository productRepository;
     private final WalletRepository walletRepository;
+    private final AddressRepository addressRepository;
+    private final InventoryEventProducer inventoryEventProducer;
+    private final KafkaOrderEventPublisher kafkaOrderEventPublisher;
 
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
-
-    @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository, UserRepository userRepository,
-                            OrderMapper orderMapper, CartRepository cartRepository,
-                            PaymentService paymentService, CartService cartService,
-                            ProductRepository productRepository, WalletRepository walletRepository) {
-        this.orderRepository = orderRepository;
-        this.userRepository = userRepository;
-        this.orderMapper = orderMapper;
-        this.cartRepository = cartRepository;
-        this.paymentService = paymentService;
-        this.cartService = cartService;
-        this.productRepository = productRepository;
-        this.walletRepository = walletRepository;
-    }
 
     @Transactional
     @Override
@@ -81,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional
     @Override
-    public OrderDTO paymentOrder(Long orderId, HttpSession session) {
+    public OrderDTO paymentOrder(Long orderId, HttpSession session, Long addressId) {
         logger.info("Попытка оплатить заказ");
         String userLogin = SessionUtils.getUserLogin(session);
         User user = userRepository.findByLogin(userLogin)
@@ -91,6 +87,24 @@ public class OrderServiceImpl implements OrderService {
 
         if (!order.getUser().equals(user)) {
             throw new PaymentProcessingException("Вы не можете оплатить чужой заказ!");
+        }
+
+        // Проверяем, есть ли у пользователя хотя бы один адрес
+        List<Address> userAddresses = addressRepository.findAddressByUser(user);
+        if (userAddresses.isEmpty()) {
+            throw new UserHasNoAddressException("У вас нет сохраненного адреса. Добавьте адрес перед оплатой.");
+        }
+
+        // Если у пользователя есть адреса, но он не указал конкретный адрес
+        if (addressId == null) {
+            throw new AddressNotProvidedException("Вы не указали адрес для доставки.");
+        }
+
+        // Проверяем, принадлежит ли указанный адрес пользователю
+        Address deliveryAddress = addressRepository.findById(addressId)
+                .orElseThrow(() -> new AddressNotFoundException("Адрес с ID " + addressId + " не найден."));
+        if (!deliveryAddress.getUser().equals(user)) {
+            throw new UnauthorizedAccessException("Вы не можете использовать этот адрес.");
         }
 
         boolean paymentSuccess = paymentService.processPayment(user, order.getTotalPrice());
@@ -106,9 +120,6 @@ public class OrderServiceImpl implements OrderService {
                     throw new NotEnoughStockException("Недостаточно товара на складе: " + product.getTitle());
                 }
 
-                product.setStocks(product.getStocks() - item.getQuantity());
-                productRepository.save(product);
-
                 User seller = product.getOwner();
                 Wallet sellerWallet = walletRepository.findByUser(seller)
                         .orElseThrow(() -> new WalletNotFoundException("Кошелек продавца не найден"));
@@ -117,9 +128,22 @@ public class OrderServiceImpl implements OrderService {
                         .add(BigDecimal.valueOf(item.getQuantity()).multiply(item.getPrice())));
 
                 walletRepository.save(sellerWallet);
+
+                // Отправка Kafka-события для обновления остатков товара
+                inventoryEventProducer.sendInventoryUpdate(product.getId(), item.getQuantity());
+
+                // Отправляем Kafka-событие для продавца
+                EmailNotificationEvent emailEvent = new EmailNotificationEvent(
+                        seller.getEmail(),
+                        product.getTitle(),
+                        item.getQuantity(),
+                        deliveryAddress.toString()
+                );
+                kafkaOrderEventPublisher.sendEmailNotification(emailEvent);
             }
 
             orderRepository.save(order);
+
             cartService.clearCart(session);
             return orderMapper.toOrderDTO(order);
         } else {

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +48,7 @@ public class WalletController {
     })
     @PostMapping("/create")
     public ResponseEntity<WalletResponseDTO> createWallet(HttpSession session,
-                                                          @RequestBody WalletCreateDTO walletCreateDTO) {
+                                                          @Valid @RequestBody WalletCreateDTO walletCreateDTO) {
         logger.info("Запрос на создание нового кошелька");
         WalletResponseDTO walletResponseDTO = walletService.createWallet(walletCreateDTO, session);
         return ResponseEntity.status(HttpStatus.CREATED).body(walletResponseDTO);
@@ -76,7 +77,7 @@ public class WalletController {
     })
     @PostMapping("/change-pin")
     public ResponseEntity<String> changePin(HttpSession session,
-                                            @RequestBody WalletUpdatePinDTO walletUpdatePinDTO) {
+                                            @Valid @RequestBody WalletUpdatePinDTO walletUpdatePinDTO) {
         logger.info("Запрос на смену PIN-кода");
         walletService.changePin(session, walletUpdatePinDTO);
         logger.info("PIN-код успешно изменен!");

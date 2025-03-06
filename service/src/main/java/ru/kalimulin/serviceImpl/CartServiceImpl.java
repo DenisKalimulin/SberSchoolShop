@@ -1,9 +1,9 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.cartExceptions.CartItemNotFoundException;
@@ -28,6 +28,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 @Service
+@RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
     private final CartRepository cartRepository;
     private final ProductRepository productRepository;
@@ -37,21 +38,6 @@ public class CartServiceImpl implements CartService {
     private final CartItemMapper cartItemMapper;
 
     private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
-
-    @Autowired
-    public CartServiceImpl(CartRepository cartRepository,
-                           ProductRepository productRepository,
-                           UserRepository userRepository,
-                           CartItemRepository cartItemRepository,
-                           CartMapper cartMapper,
-                           CartItemMapper cartItemMapper) {
-        this.cartRepository = cartRepository;
-        this.productRepository = productRepository;
-        this.userRepository = userRepository;
-        this.cartItemRepository = cartItemRepository;
-        this.cartMapper = cartMapper;
-        this.cartItemMapper = cartItemMapper;
-    }
 
     @Transactional
     @Override

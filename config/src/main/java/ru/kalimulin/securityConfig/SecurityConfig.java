@@ -1,4 +1,4 @@
-package ru.kalimulin.security_config;
+package ru.kalimulin.securityConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

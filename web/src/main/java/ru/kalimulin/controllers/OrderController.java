@@ -45,9 +45,11 @@ public class OrderController {
     @PostMapping("/payment/{orderId}")
     public ResponseEntity<OrderDTO> paymentOrder(
             @Parameter(description = "ID заказа, который требуется оплатить", example = "1")
-            @PathVariable Long orderId, HttpSession session) {
+            @PathVariable Long orderId,
+            @RequestParam(required = false) Long addressId,
+            HttpSession session) {
         logger.info("Запрос на оплату заказа");
-        OrderDTO orderDTO = orderService.paymentOrder(orderId, session);
+        OrderDTO orderDTO = orderService.paymentOrder(orderId, session, addressId);
         return ResponseEntity.ok(orderDTO);
     }
 

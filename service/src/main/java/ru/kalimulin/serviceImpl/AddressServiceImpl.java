@@ -1,9 +1,9 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.addressExceptions.AddressNotFoundException;
@@ -23,21 +23,13 @@ import ru.kalimulin.util.SessionUtils;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
     private final UserRepository userRepository;
     private final AddressMapper addressMapper;
 
     private static final Logger logger = LoggerFactory.getLogger(AddressServiceImpl.class);
-
-    @Autowired
-    public AddressServiceImpl(AddressRepository addressRepository,
-                              UserRepository userRepository,
-                              AddressMapper addressMapper) {
-        this.addressRepository = addressRepository;
-        this.userRepository = userRepository;
-        this.addressMapper = addressMapper;
-    }
 
     @Transactional
     @Override
@@ -70,7 +62,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public AddressResponseDTO updateAddress(Long addressId, AddressUpdateDTO addressUpdateDTO, HttpSession session) {
         User user = getUser(session);
-        logger.info("Запрос на обновление адреса" );
+        logger.info("Запрос на обновление адреса");
 
         Address address = getAddressById(addressId);
 

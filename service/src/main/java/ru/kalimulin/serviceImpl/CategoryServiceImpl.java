@@ -1,8 +1,8 @@
 package ru.kalimulin.serviceImpl;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.categoryExceptions.CategoryAlreadyExistsException;
@@ -18,16 +18,11 @@ import ru.kalimulin.service.CategoryService;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
     private static final Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
-
-    @Autowired
-    public CategoryServiceImpl(CategoryRepository categoryRepository, CategoryMapper categoryMapper) {
-        this.categoryRepository = categoryRepository;
-        this.categoryMapper = categoryMapper;
-    }
 
     @Transactional(readOnly = true)
     @Override

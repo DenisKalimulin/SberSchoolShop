@@ -37,7 +37,7 @@ public interface OrderService {
      * @throws PaymentProcessingException если произошла ошибка при обработке платежа.
      * @throws NotEnoughStockException    если товара недостаточно на складе.
      */
-    OrderDTO paymentOrder(Long orderId, HttpSession session);
+    OrderDTO paymentOrder(Long orderId, HttpSession session, Long addressId);
 
     /**
      * Получает список всех заказов пользователя.

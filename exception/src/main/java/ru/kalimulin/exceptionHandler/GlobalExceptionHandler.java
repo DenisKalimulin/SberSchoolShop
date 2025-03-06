@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.kalimulin.customExceptions.addressExceptions.AddressNotFoundException;
+import ru.kalimulin.customExceptions.addressExceptions.AddressNotProvidedException;
+import ru.kalimulin.customExceptions.addressExceptions.UserHasNoAddressException;
 import ru.kalimulin.customExceptions.cartExceptions.CartIsEmptyException;
 import ru.kalimulin.customExceptions.cartExceptions.CartItemNotFoundException;
 import ru.kalimulin.customExceptions.cartExceptions.CartNotFoundException;
@@ -19,6 +21,7 @@ import ru.kalimulin.customExceptions.productExceptions.ProductNotFoundException;
 import ru.kalimulin.customExceptions.productExceptions.ProductOutOfStockException;
 import ru.kalimulin.customExceptions.reviewExceptions.ReviewException;
 import ru.kalimulin.customExceptions.reviewExceptions.ReviewNotFoundException;
+import ru.kalimulin.customExceptions.roleExceptions.RoleAlreadyAssignedException;
 import ru.kalimulin.customExceptions.roleExceptions.RoleNotFoundException;
 import ru.kalimulin.customExceptions.userExceptions.*;
 import ru.kalimulin.customExceptions.walletExceptions.InsufficientFundsException;
@@ -188,5 +191,22 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleOrderCannotBeDeletedException(OrderCannotBeDeletedException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(UserHasNoAddressException.class)
+    public ResponseEntity<ErrorResponse> handleUserHasNoAddressException(UserHasNoAddressException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(AddressNotProvidedException.class)
+    public ResponseEntity<ErrorResponse> handleAddressNotProvidedException(AddressNotProvidedException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST.value());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(RoleAlreadyAssignedException.class)
+    public ResponseEntity<String> handleRoleAlreadyAssignedException(RoleAlreadyAssignedException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }

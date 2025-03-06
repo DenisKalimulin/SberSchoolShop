@@ -1,6 +1,7 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class FavoriteServiceImpl implements FavoriteService {
 
     private final UserRepository userRepository;
@@ -30,14 +32,6 @@ public class FavoriteServiceImpl implements FavoriteService {
     private final FavoriteRepository favoriteRepository;
     private final ProductMapper productMapper;
     private static final Logger logger = LoggerFactory.getLogger(FavoriteServiceImpl.class);
-
-    public FavoriteServiceImpl(UserRepository userRepository, ProductRepository productRepository,
-                               FavoriteRepository favoriteRepository, ProductMapper productMapper) {
-        this.userRepository = userRepository;
-        this.productRepository = productRepository;
-        this.favoriteRepository = favoriteRepository;
-        this.productMapper = productMapper;
-    }
 
     @Transactional
     @Override

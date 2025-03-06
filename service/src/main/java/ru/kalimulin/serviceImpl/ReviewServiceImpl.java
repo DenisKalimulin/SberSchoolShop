@@ -1,9 +1,9 @@
 package ru.kalimulin.serviceImpl;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kalimulin.customExceptions.reviewExceptions.ReviewException;
@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
@@ -31,15 +32,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     private static final Logger logger = LoggerFactory.getLogger(ReviewServiceImpl.class);
     private final OrderRepository orderRepository;
-
-    @Autowired
-    public ReviewServiceImpl(ReviewRepository reviewRepository, UserRepository userRepository,
-                             ReviewMapper reviewMapper, OrderRepository orderRepository) {
-        this.reviewRepository = reviewRepository;
-        this.userRepository = userRepository;
-        this.reviewMapper = reviewMapper;
-        this.orderRepository = orderRepository;
-    }
 
     @Transactional
     @Override
