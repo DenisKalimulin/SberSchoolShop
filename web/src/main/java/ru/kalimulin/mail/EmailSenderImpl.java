@@ -24,6 +24,11 @@ public class EmailSenderImpl implements EmailSender {
         sendEmail(sellerEmail, subject, body);
     }
 
+    @Override
+    public void sendWalletNotification(String email, String subject, String message) {
+        sendEmail(email, subject, message);
+    }
+
     private void sendEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(fromEmail);

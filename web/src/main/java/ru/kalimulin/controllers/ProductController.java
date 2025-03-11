@@ -21,6 +21,7 @@ import ru.kalimulin.enums.ProductStatus;
 import ru.kalimulin.service.ProductService;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/shop/products")
@@ -147,5 +148,10 @@ public class ProductController {
         logger.info("Запрос на удаление товара");
         productService.deleteProduct(id, session);
         return ResponseEntity.ok("Товар успешно удалён");
+    }
+
+    @GetMapping("/popular")
+    public ResponseEntity<List<ProductResponseDTO>> getPopularProducts() {
+        return ResponseEntity.ok(productService.getPopularProducts());
     }
 }

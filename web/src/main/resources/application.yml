@@ -3,9 +3,10 @@ spring:
     bootstrap-servers: localhost:9092
 
     topics:
-      order-events: order-events
       email-notifications: email-notifications
       inventory-updates: inventory-updates
+      wallet-transactions: wallet-transactions
+      wallet-email-notifications: wallet-email-notifications
 
     consumer:
       group-id: email-group
@@ -19,6 +20,12 @@ spring:
       properties:
         spring.json.trusted.packages: "*"
 
+    wallet-consumer:
+      group-id: wallet-group
+      auto-offset-reset: earliest
+      properties:
+        spring.json.trusted.packages: "*"
+
     producer:
       properties:
         spring.json.trusted.packages: "*"
@@ -27,10 +34,21 @@ spring:
     host: smtp.mail.ru
     port: 587
     username: sberschoolshop@mail.ru
-    password: KvfwpdQhvjJshga2wMXK
+    password: ----------
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 6000
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+          min-idle: 1

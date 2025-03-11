@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.52">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>3071</IntrospectionStateNumber>
+      <IntrospectionStateNumber>3208</IntrospectionStateNumber>
       <ServerVersion>16.3</ServerVersion>
       <StartupTime>1738135238</StartupTime>
       <TimeZones>true ACDT
@@ -87,8 +87,8 @@ false Africa/Timbuktu
 false Africa/Tripoli
 false Africa/Tunis
 false Africa/Windhoek
-false America/Adak
-false America/Anchorage
+true America/Adak
+true America/Anchorage
 false America/Anguilla
 false America/Antigua
 false America/Araguaina
@@ -108,7 +108,7 @@ false America/Argentina/Ushuaia
 false America/Aruba
 true America/Asuncion
 false America/Atikokan
-false America/Atka
+true America/Atka
 false America/Bahia
 false America/Bahia_Banderas
 false America/Barbados
@@ -117,18 +117,18 @@ false America/Belize
 false America/Blanc-Sablon
 false America/Boa_Vista
 false America/Bogota
-false America/Boise
+true America/Boise
 false America/Buenos_Aires
-false America/Cambridge_Bay
+true America/Cambridge_Bay
 false America/Campo_Grande
 false America/Cancun
 false America/Caracas
 false America/Catamarca
 false America/Cayenne
 false America/Cayman
-false America/Chicago
+true America/Chicago
 false America/Chihuahua
-false America/Ciudad_Juarez
+true America/Ciudad_Juarez
 false America/Coral_Harbour
 false America/Cordoba
 false America/Costa_Rica
@@ -138,123 +138,123 @@ false America/Curacao
 false America/Danmarkshavn
 false America/Dawson
 false America/Dawson_Creek
-false America/Denver
-false America/Detroit
+true America/Denver
+true America/Detroit
 false America/Dominica
-false America/Edmonton
+true America/Edmonton
 false America/Eirunepe
 false America/El_Salvador
-false America/Ensenada
+true America/Ensenada
 false America/Fort_Nelson
-false America/Fort_Wayne
+true America/Fort_Wayne
 false America/Fortaleza
-false America/Glace_Bay
+true America/Glace_Bay
 false America/Godthab
-false America/Goose_Bay
-false America/Grand_Turk
+true America/Goose_Bay
+true America/Grand_Turk
 false America/Grenada
 false America/Guadeloupe
 false America/Guatemala
 false America/Guayaquil
 false America/Guyana
-false America/Halifax
-false America/Havana
+true America/Halifax
+true America/Havana
 false America/Hermosillo
-false America/Indiana/Indianapolis
-false America/Indiana/Knox
-false America/Indiana/Marengo
-false America/Indiana/Petersburg
-false America/Indiana/Tell_City
-false America/Indiana/Vevay
-false America/Indiana/Vincennes
-false America/Indiana/Winamac
-false America/Indianapolis
-false America/Inuvik
-false America/Iqaluit
+true America/Indiana/Indianapolis
+true America/Indiana/Knox
+true America/Indiana/Marengo
+true America/Indiana/Petersburg
+true America/Indiana/Tell_City
+true America/Indiana/Vevay
+true America/Indiana/Vincennes
+true America/Indiana/Winamac
+true America/Indianapolis
+true America/Inuvik
+true America/Iqaluit
 false America/Jamaica
 false America/Jujuy
-false America/Juneau
-false America/Kentucky/Louisville
-false America/Kentucky/Monticello
-false America/Knox_IN
+true America/Juneau
+true America/Kentucky/Louisville
+true America/Kentucky/Monticello
+true America/Knox_IN
 false America/Kralendijk
 false America/La_Paz
 false America/Lima
-false America/Los_Angeles
-false America/Louisville
+true America/Los_Angeles
+true America/Louisville
 false America/Lower_Princes
 false America/Maceio
 false America/Managua
 false America/Manaus
 false America/Marigot
 false America/Martinique
-false America/Matamoros
+true America/Matamoros
 false America/Mazatlan
 false America/Mendoza
-false America/Menominee
+true America/Menominee
 false America/Merida
-false America/Metlakatla
+true America/Metlakatla
 false America/Mexico_City
-false America/Miquelon
-false America/Moncton
+true America/Miquelon
+true America/Moncton
 false America/Monterrey
 false America/Montevideo
-false America/Montreal
+true America/Montreal
 false America/Montserrat
-false America/Nassau
-false America/New_York
-false America/Nipigon
-false America/Nome
+true America/Nassau
+true America/New_York
+true America/Nipigon
+true America/Nome
 false America/Noronha
-false America/North_Dakota/Beulah
-false America/North_Dakota/Center
-false America/North_Dakota/New_Salem
+true America/North_Dakota/Beulah
+true America/North_Dakota/Center
+true America/North_Dakota/New_Salem
 false America/Nuuk
-false America/Ojinaga
+true America/Ojinaga
 false America/Panama
-false America/Pangnirtung
+true America/Pangnirtung
 false America/Paramaribo
 false America/Phoenix
-false America/Port-au-Prince
+true America/Port-au-Prince
 false America/Port_of_Spain
 false America/Porto_Acre
 false America/Porto_Velho
 false America/Puerto_Rico
 false America/Punta_Arenas
-false America/Rainy_River
-false America/Rankin_Inlet
+true America/Rainy_River
+true America/Rankin_Inlet
 false America/Recife
 false America/Regina
-false America/Resolute
+true America/Resolute
 false America/Rio_Branco
 false America/Rosario
-false America/Santa_Isabel
+true America/Santa_Isabel
 false America/Santarem
 true America/Santiago
 false America/Santo_Domingo
 false America/Sao_Paulo
 false America/Scoresbysund
-false America/Shiprock
-false America/Sitka
+true America/Shiprock
+true America/Sitka
 false America/St_Barthelemy
-false America/St_Johns
+true America/St_Johns
 false America/St_Kitts
 false America/St_Lucia
 false America/St_Thomas
 false America/St_Vincent
 false America/Swift_Current
 false America/Tegucigalpa
-false America/Thule
-false America/Thunder_Bay
-false America/Tijuana
-false America/Toronto
+true America/Thule
+true America/Thunder_Bay
+true America/Tijuana
+true America/Toronto
 false America/Tortola
-false America/Vancouver
+true America/Vancouver
 false America/Virgin
 false America/Whitehorse
-false America/Winnipeg
-false America/Yakutat
-false America/Yellowknife
+true America/Winnipeg
+true America/Yakutat
+true America/Yellowknife
 false Antarctica/Casey
 false Antarctica/Davis
 false Antarctica/DumontDUrville
@@ -368,7 +368,7 @@ false Asia/Yangon
 false Asia/Yekaterinburg
 false Asia/Yerevan
 false Atlantic/Azores
-false Atlantic/Bermuda
+true Atlantic/Bermuda
 false Atlantic/Canary
 false Atlantic/Cape_Verde
 false Atlantic/Faeroe
@@ -431,19 +431,19 @@ true CLST
 true CLT
 false COT
 false CST
-false CST6CDT
+true CST6CDT
 false CXT
-false Canada/Atlantic
-false Canada/Central
-false Canada/Eastern
-false Canada/Mountain
-false Canada/Newfoundland
-false Canada/Pacific
+true Canada/Atlantic
+true Canada/Central
+true Canada/Eastern
+true Canada/Mountain
+true Canada/Newfoundland
+true Canada/Pacific
 false Canada/Saskatchewan
 false Canada/Yukon
 true Chile/Continental
 true Chile/EasterIsland
-false Cuba
+true Cuba
 false DAVT
 false DDUT
 true EASST
@@ -456,7 +456,7 @@ true EETDST
 true EGST
 false EGT
 false EST
-false EST5EDT
+true EST5EDT
 false Egypt
 true Eire
 false Etc/GMT
@@ -638,12 +638,12 @@ false MPT
 true MSD
 false MSK
 false MST
-false MST7MDT
+true MST7MDT
 true MUST
 false MUT
 false MVT
 false MYT
-false Mexico/BajaNorte
+true Mexico/BajaNorte
 false Mexico/BajaSur
 false Mexico/General
 true NDT
@@ -658,7 +658,7 @@ true NZ-CHAT
 true NZDT
 false NZST
 false NZT
-false Navajo
+true Navajo
 false OMSST
 false OMST
 true PDT
@@ -674,7 +674,7 @@ false PMST
 false PONT
 false PRC
 false PST
-false PST8PDT
+true PST8PDT
 false PWT
 true PYST
 true PYT
@@ -744,17 +744,17 @@ false Turkey
 false UCT
 true ULAST
 false ULAT
-false US/Alaska
-false US/Aleutian
+true US/Alaska
+true US/Aleutian
 false US/Arizona
-false US/Central
-false US/East-Indiana
-false US/Eastern
+true US/Central
+true US/East-Indiana
+true US/Eastern
 false US/Hawaii
-false US/Indiana-Starke
-false US/Michigan
-false US/Mountain
-false US/Pacific
+true US/Indiana-Starke
+true US/Michigan
+true US/Mountain
+true US/Pacific
 false US/Samoa
 false UT
 false UTC
@@ -849,7 +849,7 @@ false Zulu
 13452||10|C|G
 13452||-9223372036854775808|U|G
 13452||10|U|G</Grants>
-      <IntrospectionStateNumber>3071</IntrospectionStateNumber>
+      <IntrospectionStateNumber>3208</IntrospectionStateNumber>
       <ObjectId>18138</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -947,8 +947,8 @@ false Zulu
     <schema id="38" parent="14" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>3071</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-02-27.06:25:36</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>3208</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-03-11.06:35:48</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -1113,7 +1113,7 @@ false Zulu
     </table>
     <table id="61" parent="38" name="products">
       <ObjectId>18545</ObjectId>
-      <StateNumber>3024</StateNumber>
+      <StateNumber>3207</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -1341,20 +1341,26 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="92" parent="54" name="carts_pkey">
+    <index id="92" parent="54" name="idx_carts_user_id">
+      <ColNames>user_id</ColNames>
+      <ObjectId>18681</ObjectId>
+      <StateNumber>3198</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="93" parent="54" name="carts_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18527</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3022</StateNumber>
       <UnderlyingIndexId>18526</UnderlyingIndexId>
     </key>
-    <key id="93" parent="54" name="carts_user_id_key">
+    <key id="94" parent="54" name="carts_user_id_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18529</ObjectId>
       <StateNumber>3022</StateNumber>
       <UnderlyingIndexId>18528</UnderlyingIndexId>
     </key>
-    <column id="94" parent="55" name="id">
+    <column id="95" parent="55" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;categories_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1363,14 +1369,14 @@ false Zulu
       <SequenceId>18535</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="95" parent="55" name="category_name">
+    <column id="96" parent="55" name="category_name">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3023</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="96" parent="55" name="categories_pkey">
+    <index id="97" parent="55" name="categories_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18540</ObjectId>
@@ -1379,7 +1385,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="97" parent="55" name="categories_category_name_key">
+    <index id="98" parent="55" name="categories_category_name_key">
       <ColNames>category_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18542</ObjectId>
@@ -1390,34 +1396,34 @@ false Zulu
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="98" parent="55" name="categories_pkey">
+    <key id="99" parent="55" name="categories_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18541</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3023</StateNumber>
       <UnderlyingIndexId>18540</UnderlyingIndexId>
     </key>
-    <key id="99" parent="55" name="categories_category_name_key">
+    <key id="100" parent="55" name="categories_category_name_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18543</ObjectId>
       <StateNumber>3023</StateNumber>
       <UnderlyingIndexId>18542</UnderlyingIndexId>
     </key>
-    <column id="100" parent="56" name="favorite_id">
+    <column id="101" parent="56" name="favorite_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>3028</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="101" parent="56" name="product_id">
+    <column id="102" parent="56" name="product_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3028</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <foreign-key id="102" parent="56" name="favorite_product_favorite_id_fkey">
+    <foreign-key id="103" parent="56" name="favorite_product_favorite_id_fkey">
       <ColNames>favorite_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18615</ObjectId>
@@ -1426,7 +1432,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18599</RefTableId>
     </foreign-key>
-    <foreign-key id="103" parent="56" name="favorite_product_product_id_fkey">
+    <foreign-key id="104" parent="56" name="favorite_product_product_id_fkey">
       <ColNames>product_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18620</ObjectId>
@@ -1435,7 +1441,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18545</RefTableId>
     </foreign-key>
-    <index id="104" parent="56" name="favorite_product_pkey">
+    <index id="105" parent="56" name="favorite_product_pkey">
       <ColNames>favorite_id
 product_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -1445,14 +1451,26 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="105" parent="56" name="favorite_product_pkey">
+    <index id="106" parent="56" name="idx_favorite_product_favorite_id">
+      <ColNames>favorite_id</ColNames>
+      <ObjectId>18687</ObjectId>
+      <StateNumber>3204</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="107" parent="56" name="idx_favorite_product_product_id">
+      <ColNames>product_id</ColNames>
+      <ObjectId>18688</ObjectId>
+      <StateNumber>3205</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="108" parent="56" name="favorite_product_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18614</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3028</StateNumber>
       <UnderlyingIndexId>18613</UnderlyingIndexId>
     </key>
-    <column id="106" parent="57" name="id">
+    <column id="109" parent="57" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;favorites_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1461,14 +1479,14 @@ product_id</ColNames>
       <SequenceId>18598</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="107" parent="57" name="user_id">
+    <column id="110" parent="57" name="user_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3027</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <foreign-key id="108" parent="57" name="favorites_user_id_fkey">
+    <foreign-key id="111" parent="57" name="favorites_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18605</ObjectId>
@@ -1477,7 +1495,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <index id="109" parent="57" name="favorites_pkey">
+    <index id="112" parent="57" name="favorites_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18603</ObjectId>
@@ -1486,14 +1504,20 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="110" parent="57" name="favorites_pkey">
+    <index id="113" parent="57" name="idx_favorites_user_id">
+      <ColNames>user_id</ColNames>
+      <ObjectId>18686</ObjectId>
+      <StateNumber>3203</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="114" parent="57" name="favorites_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18604</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3027</StateNumber>
       <UnderlyingIndexId>18603</UnderlyingIndexId>
     </key>
-    <column id="111" parent="58" name="id">
+    <column id="115" parent="58" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;images_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1502,21 +1526,21 @@ product_id</ColNames>
       <SequenceId>18568</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="112" parent="58" name="image_url">
+    <column id="116" parent="58" name="image_url">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3025</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="113" parent="58" name="product_id">
+    <column id="117" parent="58" name="product_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3025</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <foreign-key id="114" parent="58" name="images_product_id_fkey">
+    <foreign-key id="118" parent="58" name="images_product_id_fkey">
       <ColNames>product_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18575</ObjectId>
@@ -1525,7 +1549,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18545</RefTableId>
     </foreign-key>
-    <index id="115" parent="58" name="images_pkey">
+    <index id="119" parent="58" name="images_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18573</ObjectId>
@@ -1534,20 +1558,20 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="116" parent="58" name="images_pkey">
+    <key id="120" parent="58" name="images_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18574</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3025</StateNumber>
       <UnderlyingIndexId>18573</UnderlyingIndexId>
     </key>
-    <check id="117" parent="59" name="order_items_quantity_check">
+    <check id="121" parent="59" name="order_items_quantity_check">
       <ColNames>quantity</ColNames>
       <ObjectId>18665</ObjectId>
       <Predicate>quantity &gt; 0</Predicate>
       <StateNumber>3070</StateNumber>
     </check>
-    <column id="118" parent="59" name="id">
+    <column id="122" parent="59" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;order_items_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1556,35 +1580,35 @@ product_id</ColNames>
       <SequenceId>18660</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="119" parent="59" name="order_id">
+    <column id="123" parent="59" name="order_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3070</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="120" parent="59" name="product_id">
+    <column id="124" parent="59" name="product_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3070</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="121" parent="59" name="quantity">
+    <column id="125" parent="59" name="quantity">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>3070</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="122" parent="59" name="price">
+    <column id="126" parent="59" name="price">
       <DasType>numeric(10,2 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>3070</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <foreign-key id="123" parent="59" name="order_items_order_id_fkey">
+    <foreign-key id="127" parent="59" name="order_items_order_id_fkey">
       <ColNames>order_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18668</ObjectId>
@@ -1593,7 +1617,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18648</RefTableId>
     </foreign-key>
-    <foreign-key id="124" parent="59" name="order_items_product_id_fkey">
+    <foreign-key id="128" parent="59" name="order_items_product_id_fkey">
       <ColNames>product_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18673</ObjectId>
@@ -1602,7 +1626,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18545</RefTableId>
     </foreign-key>
-    <index id="125" parent="59" name="order_items_pkey">
+    <index id="129" parent="59" name="order_items_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18666</ObjectId>
@@ -1611,14 +1635,14 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="126" parent="59" name="order_items_pkey">
+    <key id="130" parent="59" name="order_items_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18667</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3070</StateNumber>
       <UnderlyingIndexId>18666</UnderlyingIndexId>
     </key>
-    <column id="127" parent="60" name="id">
+    <column id="131" parent="60" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;orders_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1627,35 +1651,35 @@ product_id</ColNames>
       <SequenceId>18647</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="128" parent="60" name="user_id">
+    <column id="132" parent="60" name="user_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3069</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="129" parent="60" name="total_price">
+    <column id="133" parent="60" name="total_price">
       <DasType>numeric(15,2 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3069</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <column id="130" parent="60" name="status">
+    <column id="134" parent="60" name="status">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>3069</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="131" parent="60" name="created_at">
+    <column id="135" parent="60" name="created_at">
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>now()</DefaultExpression>
       <Position>5</Position>
       <StateNumber>3069</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="132" parent="60" name="orders_user_id_fkey">
+    <foreign-key id="136" parent="60" name="orders_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18655</ObjectId>
@@ -1664,7 +1688,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <index id="133" parent="60" name="orders_pkey">
+    <index id="137" parent="60" name="orders_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18653</ObjectId>
@@ -1673,26 +1697,26 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="134" parent="60" name="orders_pkey">
+    <key id="138" parent="60" name="orders_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18654</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3069</StateNumber>
       <UnderlyingIndexId>18653</UnderlyingIndexId>
     </key>
-    <check id="135" parent="61" name="products_price_check">
+    <check id="139" parent="61" name="products_price_check">
       <ColNames>price</ColNames>
       <ObjectId>18553</ObjectId>
       <Predicate>price &gt; (0)::numeric</Predicate>
       <StateNumber>3024</StateNumber>
     </check>
-    <check id="136" parent="61" name="products_stocks_check">
+    <check id="140" parent="61" name="products_stocks_check">
       <ColNames>stocks</ColNames>
       <ObjectId>18552</ObjectId>
       <Predicate>stocks &gt;= 0</Predicate>
       <StateNumber>3024</StateNumber>
     </check>
-    <column id="137" parent="61" name="id">
+    <column id="141" parent="61" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;products_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1701,35 +1725,35 @@ product_id</ColNames>
       <SequenceId>18544</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="138" parent="61" name="title">
+    <column id="142" parent="61" name="title">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="139" parent="61" name="description">
+    <column id="143" parent="61" name="description">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="140" parent="61" name="stocks">
+    <column id="144" parent="61" name="stocks">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="141" parent="61" name="price">
+    <column id="145" parent="61" name="price">
       <DasType>numeric(10,2 digit)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <column id="142" parent="61" name="status">
+    <column id="146" parent="61" name="status">
       <DasType>varchar(50)|0s</DasType>
       <DefaultExpression>&apos;AVAILABLE&apos;::character varying</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1737,35 +1761,41 @@ product_id</ColNames>
       <StateNumber>3024</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="143" parent="61" name="category_id">
+    <column id="147" parent="61" name="category_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="144" parent="61" name="user_id">
+    <column id="148" parent="61" name="user_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="145" parent="61" name="created_at">
+    <column id="149" parent="61" name="created_at">
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>now()</DefaultExpression>
       <Position>9</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="146" parent="61" name="updated_at">
+    <column id="150" parent="61" name="updated_at">
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>now()</DefaultExpression>
       <Position>10</Position>
       <StateNumber>3024</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="147" parent="61" name="products_category_id_fkey">
+    <column id="151" parent="61" name="sales_count">
+      <DasType>integer|0s</DasType>
+      <Position>11</Position>
+      <StateNumber>3207</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="152" parent="61" name="products_category_id_fkey">
       <ColNames>category_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18558</ObjectId>
@@ -1774,7 +1804,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18536</RefTableId>
     </foreign-key>
-    <foreign-key id="148" parent="61" name="products_user_id_fkey">
+    <foreign-key id="153" parent="61" name="products_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18563</ObjectId>
@@ -1783,7 +1813,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <index id="149" parent="61" name="products_pkey">
+    <index id="154" parent="61" name="products_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18556</ObjectId>
@@ -1792,20 +1822,47 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="150" parent="61" name="products_pkey">
+    <index id="155" parent="61" name="idx_products_price">
+      <ColNames>price</ColNames>
+      <ObjectId>18685</ObjectId>
+      <StateNumber>3202</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="156" parent="61" name="idx_products_status">
+      <ColNames>status</ColNames>
+      <ObjectId>18684</ObjectId>
+      <StateNumber>3201</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="157" parent="61" name="idx_products_category_id">
+      <ColNames>category_id</ColNames>
+      <ObjectId>18682</ObjectId>
+      <StateNumber>3199</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="158" parent="61" name="idx_products_user_id">
+      <ColNames>user_id</ColNames>
+      <ObjectId>18683</ObjectId>
+      <StateNumber>3200</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="159" parent="61" name="products_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18557</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3024</StateNumber>
       <UnderlyingIndexId>18556</UnderlyingIndexId>
     </key>
-    <check id="151" parent="62" name="reviews_rating_check">
+    <check id="160" parent="62" name="reviews_rating_check">
       <ColNames>rating</ColNames>
       <ObjectId>18631</ObjectId>
       <Predicate>(rating &gt;= 1) AND (rating &lt;= 5)</Predicate>
       <StateNumber>3029</StateNumber>
     </check>
-    <column id="152" parent="62" name="id">
+    <column id="161" parent="62" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;reviews_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1814,41 +1871,41 @@ product_id</ColNames>
       <SequenceId>18625</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="153" parent="62" name="seller_id">
+    <column id="162" parent="62" name="seller_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3029</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="154" parent="62" name="buyer_id">
+    <column id="163" parent="62" name="buyer_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3029</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="155" parent="62" name="rating">
+    <column id="164" parent="62" name="rating">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>3029</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="156" parent="62" name="comment">
+    <column id="165" parent="62" name="comment">
       <DasType>text|0s</DasType>
       <Position>5</Position>
       <StateNumber>3029</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="157" parent="62" name="created_at">
+    <column id="166" parent="62" name="created_at">
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>now()</DefaultExpression>
       <Position>6</Position>
       <StateNumber>3029</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <foreign-key id="158" parent="62" name="reviews_seller_id_fkey">
+    <foreign-key id="167" parent="62" name="reviews_seller_id_fkey">
       <ColNames>seller_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18636</ObjectId>
@@ -1857,7 +1914,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <foreign-key id="159" parent="62" name="reviews_buyer_id_fkey">
+    <foreign-key id="168" parent="62" name="reviews_buyer_id_fkey">
       <ColNames>buyer_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18641</ObjectId>
@@ -1866,7 +1923,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <index id="160" parent="62" name="reviews_pkey">
+    <index id="169" parent="62" name="reviews_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18634</ObjectId>
@@ -1875,14 +1932,14 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="161" parent="62" name="reviews_pkey">
+    <key id="170" parent="62" name="reviews_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18635</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3029</StateNumber>
       <UnderlyingIndexId>18634</UnderlyingIndexId>
     </key>
-    <column id="162" parent="63" name="id">
+    <column id="171" parent="63" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;roles_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1891,14 +1948,14 @@ product_id</ColNames>
       <SequenceId>18465</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="163" parent="63" name="role_name">
+    <column id="172" parent="63" name="role_name">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3018</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="164" parent="63" name="roles_pkey">
+    <index id="173" parent="63" name="roles_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18470</ObjectId>
@@ -1907,7 +1964,7 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="165" parent="63" name="roles_role_name_key">
+    <index id="174" parent="63" name="roles_role_name_key">
       <ColNames>role_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18472</ObjectId>
@@ -1918,20 +1975,20 @@ product_id</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="166" parent="63" name="roles_pkey">
+    <key id="175" parent="63" name="roles_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18471</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3018</StateNumber>
       <UnderlyingIndexId>18470</UnderlyingIndexId>
     </key>
-    <key id="167" parent="63" name="roles_role_name_key">
+    <key id="176" parent="63" name="roles_role_name_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18473</ObjectId>
       <StateNumber>3018</StateNumber>
       <UnderlyingIndexId>18472</UnderlyingIndexId>
     </key>
-    <column id="168" parent="64" name="id">
+    <column id="177" parent="64" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -1940,28 +1997,28 @@ product_id</ColNames>
       <SequenceId>18452</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="169" parent="64" name="login">
+    <column id="178" parent="64" name="login">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3017</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="170" parent="64" name="email">
+    <column id="179" parent="64" name="email">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3017</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="171" parent="64" name="password">
+    <column id="180" parent="64" name="password">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>3017</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="172" parent="64" name="users_pkey">
+    <index id="181" parent="64" name="users_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18459</ObjectId>
@@ -1970,7 +2027,7 @@ product_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="173" parent="64" name="users_login_key">
+    <index id="182" parent="64" name="users_login_key">
       <ColNames>login</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18461</ObjectId>
@@ -1981,7 +2038,7 @@ product_id</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="174" parent="64" name="users_email_key">
+    <index id="183" parent="64" name="users_email_key">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18463</ObjectId>
@@ -1992,40 +2049,58 @@ product_id</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <key id="175" parent="64" name="users_pkey">
+    <index id="184" parent="64" name="idx_users_login">
+      <ColNames>login</ColNames>
+      <ObjectId>18678</ObjectId>
+      <StateNumber>3195</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="185" parent="64" name="idx_users_email">
+      <ColNames>email</ColNames>
+      <ObjectId>18679</ObjectId>
+      <StateNumber>3196</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="186" parent="64" name="users_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18460</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3017</StateNumber>
       <UnderlyingIndexId>18459</UnderlyingIndexId>
     </key>
-    <key id="176" parent="64" name="users_login_key">
+    <key id="187" parent="64" name="users_login_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18462</ObjectId>
       <StateNumber>3017</StateNumber>
       <UnderlyingIndexId>18461</UnderlyingIndexId>
     </key>
-    <key id="177" parent="64" name="users_email_key">
+    <key id="188" parent="64" name="users_email_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18464</ObjectId>
       <StateNumber>3017</StateNumber>
       <UnderlyingIndexId>18463</UnderlyingIndexId>
     </key>
-    <column id="178" parent="65" name="user_id">
+    <column id="189" parent="65" name="user_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>3019</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="179" parent="65" name="role_id">
+    <column id="190" parent="65" name="role_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>3019</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <foreign-key id="180" parent="65" name="users_roles_user_id_fkey">
+    <foreign-key id="191" parent="65" name="users_roles_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18479</ObjectId>
@@ -2034,7 +2109,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <foreign-key id="181" parent="65" name="users_roles_role_id_fkey">
+    <foreign-key id="192" parent="65" name="users_roles_role_id_fkey">
       <ColNames>role_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18484</ObjectId>
@@ -2043,7 +2118,7 @@ product_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18466</RefTableId>
     </foreign-key>
-    <index id="182" parent="65" name="users_roles_pkey">
+    <index id="193" parent="65" name="users_roles_pkey">
       <ColNames>user_id
 role_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -2053,14 +2128,14 @@ role_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="183" parent="65" name="users_roles_pkey">
+    <key id="194" parent="65" name="users_roles_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18478</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3019</StateNumber>
       <UnderlyingIndexId>18477</UnderlyingIndexId>
     </key>
-    <column id="184" parent="66" name="id">
+    <column id="195" parent="66" name="id">
       <DasType>integer|0s</DasType>
       <DefaultExpression>nextval(&apos;wallets_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
@@ -2069,7 +2144,7 @@ role_id</ColNames>
       <SequenceId>18503</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="185" parent="66" name="balance">
+    <column id="196" parent="66" name="balance">
       <DasType>numeric(15,2 digit)|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
@@ -2077,28 +2152,28 @@ role_id</ColNames>
       <StateNumber>3021</StateNumber>
       <TypeId>1700</TypeId>
     </column>
-    <column id="186" parent="66" name="pin">
+    <column id="197" parent="66" name="pin">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>3021</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="187" parent="66" name="wallet_number">
+    <column id="198" parent="66" name="wallet_number">
       <DasType>varchar(12)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>3021</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="188" parent="66" name="user_id">
+    <column id="199" parent="66" name="user_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>3021</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <foreign-key id="189" parent="66" name="wallets_user_id_fkey">
+    <foreign-key id="200" parent="66" name="wallets_user_id_fkey">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18515</ObjectId>
@@ -2107,7 +2182,7 @@ role_id</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>18453</RefTableId>
     </foreign-key>
-    <index id="190" parent="66" name="wallets_pkey">
+    <index id="201" parent="66" name="wallets_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18509</ObjectId>
@@ -2116,7 +2191,7 @@ role_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="191" parent="66" name="wallets_wallet_number_key">
+    <index id="202" parent="66" name="wallets_wallet_number_key">
       <ColNames>wallet_number</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18511</ObjectId>
@@ -2127,7 +2202,7 @@ role_id</ColNames>
       <CollationIds>100</CollationIds>
       <CollationParentNames>pg_catalog</CollationParentNames>
     </index>
-    <index id="192" parent="66" name="wallets_user_id_key">
+    <index id="203" parent="66" name="wallets_user_id_key">
       <ColNames>user_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18513</ObjectId>
@@ -2135,20 +2210,26 @@ role_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="193" parent="66" name="wallets_pkey">
+    <index id="204" parent="66" name="idx_wallets_user_id">
+      <ColNames>user_id</ColNames>
+      <ObjectId>18680</ObjectId>
+      <StateNumber>3197</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="205" parent="66" name="wallets_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18510</ObjectId>
       <Primary>1</Primary>
       <StateNumber>3021</StateNumber>
       <UnderlyingIndexId>18509</UnderlyingIndexId>
     </key>
-    <key id="194" parent="66" name="wallets_wallet_number_key">
+    <key id="206" parent="66" name="wallets_wallet_number_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18512</ObjectId>
       <StateNumber>3021</StateNumber>
       <UnderlyingIndexId>18511</UnderlyingIndexId>
     </key>
-    <key id="195" parent="66" name="wallets_user_id_key">
+    <key id="207" parent="66" name="wallets_user_id_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>18514</ObjectId>
       <StateNumber>3021</StateNumber>

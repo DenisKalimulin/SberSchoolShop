@@ -12,10 +12,14 @@ import ru.kalimulin.customExceptions.walletExceptions.InsufficientFundsException
 import ru.kalimulin.customExceptions.walletExceptions.InvalidPinException;
 import ru.kalimulin.customExceptions.walletExceptions.PaymentProcessingException;
 import ru.kalimulin.customExceptions.walletExceptions.WalletNotFoundException;
+import ru.kalimulin.dto.kafkaEventDTO.WalletNotificationEvent;
+import ru.kalimulin.dto.kafkaEventDTO.WalletTransactionEvent;
 import ru.kalimulin.dto.walletDTO.WalletCreateDTO;
 import ru.kalimulin.dto.walletDTO.WalletResponseDTO;
 import ru.kalimulin.dto.walletDTO.WalletUpdateBalanceDTO;
 import ru.kalimulin.dto.walletDTO.WalletUpdatePinDTO;
+import ru.kalimulin.kafka.KafkaEmailEventPublisher;
+import ru.kalimulin.kafka.WalletEventProducer;
 import ru.kalimulin.mappers.walletMapper.WalletMapper;
 import ru.kalimulin.models.User;
 import ru.kalimulin.models.Wallet;
@@ -27,6 +31,7 @@ import ru.kalimulin.util.SessionUtils;
 
 import java.math.BigDecimal;
 import java.security.SecureRandom;
+import java.time.Instant;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +40,8 @@ public class WalletServiceImpl implements WalletService {
     private final UserRepository userRepository;
     private final WalletMapper walletMapper;
     private final PaymentService paymentService;
+    private final WalletEventProducer walletEventProducer;
+    private final KafkaEmailEventPublisher kafkaEmailEventPublisher;
 
     private static final Logger logger = LoggerFactory.getLogger(WalletServiceImpl.class);
 
@@ -69,29 +76,6 @@ public class WalletServiceImpl implements WalletService {
         Wallet wallet = findWalletByUser(findUserByLogin(SessionUtils.getUserLogin(session)));
         logger.info("Запрос кошелька");
         return walletMapper.toWalletResponseDTO(wallet);
-    }
-
-    @Transactional
-    @Override
-    public void transfer(User buyer, User seller, BigDecimal amount) {
-        logger.info("Перевод");
-
-        Wallet buyerWallet = findWalletByUser(buyer);
-
-        Wallet sellerWallet = findWalletByUser(seller);
-
-        if (buyerWallet.getBalance().compareTo(amount) < 0) {
-            logger.warn("Ошибка перевода: недостаточно средств");
-            throw new InsufficientFundsException("Недостаточно средств на балансе");
-        }
-
-        buyerWallet.setBalance(buyerWallet.getBalance().subtract(amount));
-        sellerWallet.setBalance(sellerWallet.getBalance().add(amount));
-
-        walletRepository.save(buyerWallet);
-        walletRepository.save(sellerWallet);
-
-        logger.info("Перевод завершен");
     }
 
     @Transactional
@@ -132,6 +116,27 @@ public class WalletServiceImpl implements WalletService {
         walletRepository.save(recipientWallet);
 
         logger.info("Перевод");
+
+        WalletNotificationEvent walletNotificationEventToSender = new WalletNotificationEvent(
+                sender.getEmail(), "Успешный исходящий перевод",
+                "Вы успешно перевели средства на " + walletNumber + " Время операции " + Instant.now()
+        );
+        kafkaEmailEventPublisher.sendWalletNotification(walletNotificationEventToSender);
+
+        WalletNotificationEvent walletNotificationEvent = new WalletNotificationEvent(
+                recipientWallet.getUser().getEmail(), "Успешный входящий перевод",
+                "Ваш баланс пополнен на сумму: " + amount + ". Текущий баланс: " + recipientWallet.getBalance()
+        );
+        kafkaEmailEventPublisher.sendWalletNotification(walletNotificationEvent);
+
+        WalletTransactionEvent event = new WalletTransactionEvent(
+                "TRANSFER",
+                senderLogin,
+                walletNumber,
+                amount,
+                Instant.now()
+        );
+        walletEventProducer.sendWalletTransaction(event);
     }
 
 
@@ -151,6 +156,23 @@ public class WalletServiceImpl implements WalletService {
         wallet.setBalance(wallet.getBalance().add(amount));
         walletRepository.save(wallet);
         logger.info("Баланс пользователя успешно пополнен");
+
+        WalletNotificationEvent walletNotificationEvent = new WalletNotificationEvent(
+                wallet.getUser().getEmail(), "Пополнение кошелька",
+                "Ваш кошелек успешно пополнен на " + amount + " RUB. Новый баланс: " + wallet.getBalance()
+        );
+        kafkaEmailEventPublisher.sendWalletNotification(walletNotificationEvent);
+
+        WalletTransactionEvent walletTransactionEvent = new WalletTransactionEvent(
+                "DEPOSIT",
+                wallet.getUser().getLogin(),
+                wallet.getWalletNumber(),
+                amount,
+                Instant.now()
+        );
+        walletEventProducer.sendWalletTransaction(walletTransactionEvent);
+
+
     }
 
     @Transactional
@@ -172,6 +194,20 @@ public class WalletServiceImpl implements WalletService {
 
         logger.info("Пользователь успешно сменил PIN-код");
 
+        WalletNotificationEvent walletNotificationEvent = new WalletNotificationEvent(
+                wallet.getUser().getEmail(), "Изменение PIN-кода",
+                "Ваш PIN-код успешно изменен! Время операции " + Instant.now()
+        );
+        kafkaEmailEventPublisher.sendWalletNotification(walletNotificationEvent);
+
+        WalletTransactionEvent walletTransactionEvent = new WalletTransactionEvent(
+                "PIN_CHANGE",
+                user.getLogin(),
+                wallet.getWalletNumber(),
+                null,
+                Instant.now()
+        );
+        walletEventProducer.sendWalletTransaction(walletTransactionEvent);
     }
 
     /**

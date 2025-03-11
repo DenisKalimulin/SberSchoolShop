@@ -24,7 +24,7 @@ import ru.kalimulin.dto.kafkaEventDTO.EmailNotificationEvent;
 import ru.kalimulin.dto.orderDTO.OrderDTO;
 import ru.kalimulin.enums.OrderStatus;
 import ru.kalimulin.kafka.InventoryEventProducer;
-import ru.kalimulin.kafka.KafkaOrderEventPublisher;
+import ru.kalimulin.kafka.KafkaEmailEventPublisher;
 import ru.kalimulin.mappers.orderMapper.OrderMapper;
 import ru.kalimulin.models.*;
 import ru.kalimulin.repositories.*;
@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
     private final WalletRepository walletRepository;
     private final AddressRepository addressRepository;
     private final InventoryEventProducer inventoryEventProducer;
-    private final KafkaOrderEventPublisher kafkaOrderEventPublisher;
+    private final KafkaEmailEventPublisher kafkaOrderEventPublisher;
 
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
@@ -128,6 +128,9 @@ public class OrderServiceImpl implements OrderService {
                         .add(BigDecimal.valueOf(item.getQuantity()).multiply(item.getPrice())));
 
                 walletRepository.save(sellerWallet);
+
+                // Увеличиваем количество продаж
+                product.setSalesCount(product.getSalesCount() + item.getQuantity());
 
                 // Отправка Kafka-события для обновления остатков товара
                 inventoryEventProducer.sendInventoryUpdate(product.getId(), item.getQuantity());

@@ -37,6 +37,9 @@ public class Product {
     @Column(name = "status", nullable = false)
     private ProductStatus status;
 
+    @Column(name = "sales_count", nullable = false)
+    private Integer salesCount = 0;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
@@ -50,4 +53,12 @@ public class Product {
 
     @ManyToMany(mappedBy = "products")
     private List<Favorite> favorites;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.salesCount == null) {
+            this.salesCount = 0;
+        }
+    }
+
 }

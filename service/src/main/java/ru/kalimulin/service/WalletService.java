@@ -35,16 +35,6 @@ public interface WalletService {
     WalletResponseDTO getUserWallet(HttpSession session);
 
     /**
-     * Выполняет перевод средств от покупателя к продавцу.
-     *
-     * @param buyer  пользователь, который отправляет деньги.
-     * @param seller пользователь, который получает деньги.
-     * @param amount сумма перевода.
-     * @throws InsufficientFundsException если у отправителя недостаточно средств.
-     */
-    void transfer(User buyer, User seller, BigDecimal amount);
-
-    /**
      * Выполняет перевод денег с одного кошелька на другой.
      *
      * @param walletNumber номер кошелька получателя.

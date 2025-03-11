@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import ru.kalimulin.dto.kafkaEventDTO.EmailNotificationEvent;
+import ru.kalimulin.dto.kafkaEventDTO.WalletNotificationEvent;
 import ru.kalimulin.mail.EmailSender;
 
 @Service
@@ -25,6 +26,13 @@ public class EmailEventListener {
                 event.getAddress());
 
         logger.info("Email-уведомление отправлено продавцу: {}", event.getSellerEmail());
+    }
+
+    @KafkaListener(topics = "wallet-email-notification", groupId = "email-group")
+    public void listenWalletEmails(WalletNotificationEvent event) {
+        logger.info("Получено email-уведомление из Kafka");
+        emailSender.sendWalletNotification(event.getEmail(), event.getSubject(), event.getMessage());
+        logger.info("Email-уведомление отправлено пользователю: {}", event.getEmail());
     }
 
 }

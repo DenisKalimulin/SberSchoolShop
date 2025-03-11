@@ -4,6 +4,8 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -26,6 +28,7 @@ import ru.kalimulin.models.Category;
 import ru.kalimulin.models.Image;
 import ru.kalimulin.models.Product;
 import ru.kalimulin.models.User;
+import ru.kalimulin.redis.CacheService;
 import ru.kalimulin.repositories.CategoryRepository;
 import ru.kalimulin.repositories.ProductRepository;
 import ru.kalimulin.repositories.UserRepository;
@@ -45,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
     private final ImageMapper imageMapper;
+    private final CacheService cacheService;
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
@@ -135,6 +139,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Transactional
+    @CacheEvict(value = "popularProducts", key = "'top-10'")
     @Override
     public ProductResponseDTO updateProduct(Long id, ProductUpdateDTO productUpdateDTO, HttpSession session) {
         String userLogin = SessionUtils.getUserLogin(session);
@@ -230,5 +235,20 @@ public class ProductServiceImpl implements ProductService {
         }
         productRepository.delete(product);
         logger.info("Товар с id {} успешно удален", id);
+    }
+
+    @Override
+    @Transactional
+    public List<ProductResponseDTO> getPopularProducts() {
+        logger.info("Запрос в БД: Получаем популярные товары");
+
+        return cacheService.get("popular_products", List.class)
+                .map(value -> (List<ProductResponseDTO>) value)  // Приведение типа
+                .orElseGet(() -> {
+                    List<Product> popularProducts = productRepository.findTop10ByOrderBySalesCountDesc();
+                    List<ProductResponseDTO> productDTOs = productMapper.toListProductResponseDTO(popularProducts);
+                    cacheService.put("popular_products", productDTOs); // Кешируем DTO
+                    return productDTOs;
+                });
     }
 }

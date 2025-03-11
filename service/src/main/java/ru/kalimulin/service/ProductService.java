@@ -13,8 +13,10 @@ import ru.kalimulin.dto.productDTO.ProductCreateDTO;
 import ru.kalimulin.dto.productDTO.ProductResponseDTO;
 import ru.kalimulin.dto.productDTO.ProductUpdateDTO;
 import ru.kalimulin.enums.ProductStatus;
+import ru.kalimulin.models.Product;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -108,4 +110,10 @@ public interface ProductService {
      * @throws UnauthorizedException    если пользователь не является владельцем товара.
      */
     void deleteProduct(Long id, HttpSession session);
+
+    /**
+     * Метод для получения топ-10 товаров, которые хранятся в кеше
+     * @return топ-10 товаров
+     */
+    List<ProductResponseDTO> getPopularProducts();
 }
