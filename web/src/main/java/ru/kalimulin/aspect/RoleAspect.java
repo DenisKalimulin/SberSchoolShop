@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 public class RoleAspect {
-    private HttpSession session;
+    private final HttpSession session;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public RoleAspect(HttpSession session, UserRepository userRepository) {
@@ -27,7 +27,7 @@ public class RoleAspect {
     }
 
     @Before("@annotation(roleRequired)")
-    public void checkRole(JoinPoint joinPoint, RoleRequired roleRequired) throws Throwable {
+    public void checkRole(RoleRequired roleRequired) {
         String userLogin = (String) session.getAttribute("userLogin");
         if (userLogin == null) {
             throw new AccessDeniedException("Неавторизованный доступ");
