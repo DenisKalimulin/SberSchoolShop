@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.kalimulin.dto.userDTO.UserResponseDTO;
 import ru.kalimulin.dto.userDTO.UserUpdateDTO;
 import ru.kalimulin.service.UserService;
-import ru.kalimulin.util.SessionUtils;
 
 @RestController
 @RequestMapping("/shop/users")

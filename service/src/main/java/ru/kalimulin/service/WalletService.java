@@ -8,7 +8,6 @@ import ru.kalimulin.dto.walletDTO.WalletCreateDTO;
 import ru.kalimulin.dto.walletDTO.WalletResponseDTO;
 import ru.kalimulin.dto.walletDTO.WalletUpdateBalanceDTO;
 import ru.kalimulin.dto.walletDTO.WalletUpdatePinDTO;
-import ru.kalimulin.models.User;
 
 import java.math.BigDecimal;
 

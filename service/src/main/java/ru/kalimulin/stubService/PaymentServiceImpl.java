@@ -30,6 +30,7 @@ public class PaymentServiceImpl implements PaymentService {
         this.userRepository = userRepository;
     }
 
+    @Override
     public boolean processPayment(String userLogin, BigDecimal amount) {
         logger.info("Обработка платежа для пользователя {} на сумму {}", userLogin, amount);
 

@@ -43,7 +43,6 @@ public class RoleServiceImpl implements RoleService {
                         + SessionUtils.getUserLogin(session) + " не найден"));
         logger.info("Пользователь пытается купить роль SELLER");
 
-        paymentService.withdrawFunds(user.getLogin(), SELLER_ROLE_PRICE);
 
         Role sellerRole = roleRepository.findByRoleName(RoleName.SELLER)
                 .orElseThrow(() -> new RoleNotFoundException("Роль SELLER не найдена"));
@@ -51,6 +50,8 @@ public class RoleServiceImpl implements RoleService {
         if(user.getRoles().contains(sellerRole)) {
             throw new RoleAlreadyAssignedException("Вы уже являетесь продавцом!");
         }
+
+        paymentService.withdrawFunds(user.getLogin(), SELLER_ROLE_PRICE);
 
         user.getRoles().add(sellerRole);
 
